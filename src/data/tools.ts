@@ -2,65 +2,54 @@ import type { ToolGroup } from "./types";
 
 /**
  * ============================================================================
- *  TOOLS & WORKFLOW
+ *  TOOLS AND TECHNOLOGY
  * ============================================================================
- * Organised by what the tool is *for*, not by logo.
+ * Two groups. Business tools are shown as prominent cards, technical tools as
+ * a quieter chip row — the visual hierarchy matches how central each set is to
+ * the work.
  *
- * The `note` on each tool is deliberately honest about depth of use.
- * Edit these so they match your real experience — do not upgrade yourself to
- * "expert" in a tool you have used a handful of times. Credibility compounds;
- * inflated tool levels cost more than they earn.
+ * ADDING A TOOL
+ *   1. Drop the logo file in        public/images/logos/
+ *   2. Add { name: "Tool name", logo: "tool-name.svg" } to the right group.
+ *   3. Leave `logo` out entirely and a neutral icon is shown instead — never
+ *      a broken image, and never an emoji.
+ *
+ * The logo filenames currently in use are listed against each tool below.
+ * Alt text is generated from `name`, so keep names accurate and recognisable.
  */
 
 export const toolGroups: ToolGroup[] = [
   {
-    id: "content-design",
-    title: "Content & design",
-    blurb: "Producing graphics and copy that look like they came from one brand.",
+    id: "business-productivity",
+    title: "Business and Productivity",
     tools: [
-      { name: "Canva", note: "Templates, recruitment ads, carousels, brand kits" },
-      { name: "Meta Business Suite", note: "Scheduling, publishing, inbox, insights" },
+      { name: "Canva", logo: "canva.svg" },
+      { name: "Meta Business Suite", logo: "meta.svg" },
+      { name: "Facebook", logo: "facebook.svg" },
+      { name: "LinkedIn", logo: "linkedin.svg" },
+      { name: "Google Sheets", logo: "google-sheets.svg" },
+      { name: "Gmail", logo: "gmail.svg" },
+      { name: "Microsoft Excel", logo: "microsoft-excel.svg" },
     ],
   },
   {
-    id: "social-analytics",
-    title: "Social & analytics",
-    blurb: "Publishing to the right platform and reading what came back.",
+    id: "technical-engineering",
+    title: "Technical and Engineering",
     tools: [
-      { name: "Facebook", note: "Pages, groups, organic posting, engagement" },
-      { name: "LinkedIn", note: "Company content and recruitment advertising" },
-      { name: "Meta Business Suite & Insights", note: "Reach, impressions, engagement reporting" },
-    ],
-  },
-  {
-    id: "research-outreach",
-    title: "Research & outreach",
-    blurb: "Finding the right businesses by hand and reaching out properly.",
-    tools: [
-      { name: "Google Search", note: "Manual prospect discovery and qualification" },
-      { name: "Google Sheets / Spreadsheets", note: "Contact databases, tracking, deduplication" },
-      { name: "Email", note: "Personalised manual cold outreach and follow-ups" },
-    ],
-  },
-  {
-    id: "web-development",
-    title: "Web & development",
-    blurb: "Small sites and the workflow that keeps them shippable.",
-    tools: [
-      { name: "Visual Studio Code", note: "Day-to-day editing" },
-      { name: "GitHub", note: "Version control, branches, pull requests" },
-      { name: "Vercel", note: "Deployment, previews, production releases" },
-      { name: "Next.js & TypeScript", note: "Building the sites above" },
-    ],
-  },
-  {
-    id: "technical",
-    title: "Technical foundation",
-    blurb: "Engineering study that shows up as tidier, more structured work.",
-    tools: [
-      { name: "Python", note: "Web scraping for academic projects" },
-      { name: "AutoCAD", note: "Technical drawings" },
-      { name: "Electronics Engineering (BSc, in progress)", note: "Systems thinking and debugging habits" },
+      { name: "Python", logo: "python.svg" },
+      { name: "MATLAB", logo: "matlab.png" },
+      { name: "Simulink", logo: "simulink.png" },
+      { name: "AutoCAD", logo: "autocad.svg" },
+      { name: "Multisim", logo: "multisim.svg" },
+      { name: "LTspice", logo: "ltspice.svg" },
+      { name: "Arduino IDE", logo: "arduino.svg" },
+      { name: "Tinkercad", logo: "tinkercad.svg" },
+      { name: "Java", logo: "java.svg" },
+      { name: "C", logo: "c.svg" },
+      { name: "C++", logo: "cplusplus.svg" },
+      { name: "LabVIEW", logo: "labview.svg" },
+      { name: "GitHub", logo: "github.svg" },
+      { name: "Vercel", logo: "vercel.svg" },
     ],
   },
 ];

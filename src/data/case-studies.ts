@@ -4,148 +4,126 @@ import type { CaseStudy } from "./types";
  * ============================================================================
  *  CASE STUDIES
  * ============================================================================
- * Four templates, one per discipline. Each follows the same structure:
- *   overview → objective → responsibilities → process → tools → results → lessons
+ * Three case studies, each following the same structure:
+ *   overview  →  process (numbered steps)  →  scope of work  →  closing
  *
- * The `results` array is optional by design. Leave it out and the block is
- * hidden entirely — an omitted outcome always beats an invented one. Only add
- * a figure you could put a screenshot next to.
+ * No client names, no dates, no numerical results and no testimonials appear
+ * anywhere in this file — by design. If you add a figure, only add one you
+ * could put a screenshot next to.
  *
- * To add a before/after pair, drop the images in `public/images/projects/` and
- * fill in `images: [{ src, alt, caption }]`.
+ * `category` is displayed uppercase, separated by " · ".
  */
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: "social-media-management",
+    id: "content-to-publication",
     index: "01",
-    title: "Social media management & audience performance",
-    category: "Social Media",
-    role: "Social media assistant",
-    tools: ["Meta Business Suite", "Canva", "Facebook", "LinkedIn", "Spreadsheets"],
+    title: "Managing content from research to publication.",
+    category: "Content Strategy · Design · Publishing",
     overview:
-      "Ongoing support for a business page: planning the content, producing the graphics, writing the copy, publishing on schedule, and reporting back on what the numbers actually said.",
-    objective:
-      "Keep the page consistently active and professionally presented, and give the owner a clear, jargon-free read on performance instead of a raw dashboard.",
-    responsibilities: [
-      "Planned a rolling content calendar around the client's dates and offers.",
-      "Designed graphics in Canva and wrote captions, hashtags and calls to action.",
-      "Published and scheduled posts across Facebook and LinkedIn.",
-      "Handled inbound comments and messages in the brand's tone.",
-      "Reviewed performance in Meta Business Suite and reported it monthly.",
-    ],
+      "My social media responsibilities span the full content workflow, including researching role requirements, preparing visual assets, writing captions, publishing posts, distributing content through relevant channels, and responding to audience inquiries.",
     process: [
-      "Agreed content themes, posting frequency and approval routes up front.",
-      "Drafted a month of captions in a shared sheet so approval happened in one place.",
-      "Designed assets in bulk, checking crops and contrast for each platform.",
-      "Scheduled ahead, then monitored engagement and replied to inquiries.",
-      "Pulled the reporting period's numbers, compared them with the previous month, and adjusted the next plan.",
+      {
+        title: "Research and preparation",
+        body: "Review the subject, requirements, and relevant information to establish the content's purpose.",
+      },
+      {
+        title: "Content development",
+        body: "Create Canva graphics and prepare captions suited to the intended audience.",
+      },
+      {
+        title: "Publishing and distribution",
+        body: "Publish approved content and share posts through relevant channels and groups where appropriate.",
+      },
+      {
+        title: "Audience engagement and review",
+        body: "Respond to comments and inquiries and review available performance data.",
+      },
     ],
-    results: [
-      // REPLACE with a verified figure, or delete this whole array.
-      // e.g. "Audience grew from X to Y followers between [start] and [end] — screenshot filed in the Analytics section.",
-      "Add your verified figures here, or delete this section. Do not guess.",
+    scope: [
+      "Social media graphics and campaign creatives.",
+      "Caption writing and hashtag selection.",
+      "Facebook publishing and content distribution.",
+      "Comment and inquiry management.",
+      "Performance monitoring where analytics are available.",
     ],
-    lessons: [
-      "Publishing consistently at a modest frequency beat occasional bursts every time.",
-      "Recruitment posts needed a completely different crop and headline length to promotional posts.",
-      "Reporting in plain language got far more useful feedback than forwarding a dashboard.",
-    ],
+    closing:
+      "This workflow combines research, content development, and ongoing audience support to keep social media activities organized and consistent.",
   },
 
   {
-    id: "recruitment-advertising",
+    id: "research-led-outreach",
     index: "02",
-    title: "Recruitment advertising & creative production",
-    category: "Recruitment",
-    role: "Recruitment & creative assistant",
-    tools: ["Canva", "Facebook", "LinkedIn", "Spreadsheets"],
+    title: "Research-led outreach and prospect coordination.",
+    category: "Prospect Research · Business Communication",
     overview:
-      "Producing and publishing job advertisements for an international recruitment operation, turning rough vacancy briefs into consistent, on-brand creative that could be published the same day.",
-    objective:
-      "Reduce the turnaround time between a vacancy being approved and the advertisement going live, without losing consistency between roles.",
-    responsibilities: [
-      "Turned raw vacancy briefs into short, readable job advertisements.",
-      "Designed single-image and carousel recruitment ads in Canva.",
-      "Prepared platform-specific crops for Facebook and LinkedIn.",
-      "Wrote captions, hashtag sets and clear application calls to action.",
-      "Coordinated which roles were live, scheduled, or awaiting copy.",
-    ],
+      "My outreach experience combines business research with personalized communication. I identify relevant agencies and companies, review available information, prepare individual emails, send messages manually, track responses, and coordinate relevant prospects with management.",
     process: [
-      "Captured role title, salary band, location, working pattern and closing date before designing.",
-      "Built a master template with a locked grid so only the text changed.",
-      "Produced every crop from the same master to keep the set coherent.",
-      "Checked readability at phone size before scheduling.",
-      "Logged every live advertisement in a tracking sheet with its status.",
+      {
+        title: "Prospect identification",
+        body: "Research businesses that align with the target market and business objectives.",
+      },
+      {
+        title: "Information review",
+        body: "Check available business information to assess relevance and suitability.",
+      },
+      {
+        title: "Email preparation",
+        body: "Prepare personalized correspondence based on the information gathered.",
+      },
+      {
+        title: "Outreach and tracking",
+        body: "Send emails manually and maintain records of responses.",
+      },
+      {
+        title: "Response coordination",
+        body: "Forward relevant replies and assist with coordinating prospective meetings.",
+      },
     ],
-    lessons: [
-      "A locked master template removed almost all of the per-ad design time.",
-      "Salary visibility in the first two lines made a noticeable difference to inquiries.",
-      "Keeping the tracking sheet current was what actually kept the coordination working.",
+    scope: [
+      "Business and prospect research.",
+      "Review and organization of prospect information.",
+      "Personalized email preparation.",
+      "Manual outreach and response tracking.",
+      "Coordination with management.",
     ],
+    closing:
+      "The process relies on targeted research, relevant communication, organized tracking, and consistent follow-through.",
   },
 
   {
-    id: "lead-research-outreach",
+    id: "research-into-records",
     index: "03",
-    title: "Manual international lead research & cold email outreach",
-    category: "Lead generation",
-    role: "Research & outreach assistant",
-    tools: ["Google Search", "LinkedIn", "Google Sheets", "Email"],
+    title: "Organizing business research into actionable records.",
+    category: "Online Research · Data Organization",
     overview:
-      "Hand-conducted research into international businesses, building a verified contact database from scratch and running a personalised cold email campaign against it.",
-    objective:
-      "Produce a smaller, accurate, genuinely relevant prospect list rather than a large unverified one — and reach out in a way that sounded like it was written by a person.",
-    responsibilities: [
-      "Searched for qualifying businesses by industry, size, market and region.",
-      "Located and verified decision-maker names, roles and business emails.",
-      "Built, structured and deduplicated the contact database in a spreadsheet.",
-      "Wrote personalised cold email copy referencing each prospect's own business.",
-      "Sent outreach manually and logged replies, bounces and follow-up dates.",
-    ],
+      "My agency research work involves identifying potential recruitment partners, reviewing publicly available business information, and organizing findings into structured records that support further review and outreach.",
     process: [
-      "Agreed strict qualification criteria before any research began.",
-      "Worked in batches by industry and country to keep messaging coherent.",
-      "Verified every email address against a second source before adding it.",
-      "Structured the sheet so it could be filtered by status and follow-up date.",
-      "Sent in small daily batches and recorded the outcome of each contact.",
+      {
+        title: "Targeted research",
+        body: "Identify agencies relevant to the target country or market.",
+      },
+      {
+        title: "Information verification",
+        body: "Review agency websites and available business information.",
+      },
+      {
+        title: "Structured data collection",
+        body: "Organize findings in spreadsheets using a consistent format.",
+      },
+      {
+        title: "Review and preparation",
+        body: "Keep records clear and accessible for subsequent evaluation and outreach.",
+      },
     ],
-    lessons: [
-      "Verification time paid for itself immediately in fewer bounces.",
-      "Short emails that referenced something specific to the business outperformed longer generic ones.",
-      "A clean status column mattered more than any outreach tool would have.",
+    scope: [
+      "Targeted agency and company research.",
+      "Review of publicly available business information.",
+      "Spreadsheet preparation and organization.",
+      "Consistent record maintenance.",
+      "Research preparation for further business development activities.",
     ],
-  },
-
-  {
-    id: "website-development",
-    index: "04",
-    title: "Website development & deployment",
-    category: "Web",
-    role: "Developer & maintainer",
-    tools: ["VS Code", "GitHub", "Vercel", "Next.js", "TypeScript"],
-    overview:
-      "Building and maintaining small marketing sites end to end — from layout and components in VS Code, through version control in GitHub, to a live deployment on Vercel.",
-    objective:
-      "Deliver a site that a non-technical owner could keep updated, with a publish flow that did not depend on a developer being available for every copy change.",
-    responsibilities: [
-      "Built pages and reusable components against a defined design system.",
-      "Managed version control and commit history in GitHub.",
-      "Connected the repository to Vercel for automatic deployment.",
-      "Ran production builds locally and fixed errors before publishing.",
-      "Checked layouts at phone, tablet and desktop widths.",
-    ],
-    process: [
-      "Defined the type scale, spacing system and colour palette before building.",
-      "Built content-driven components so new items need no layout edits.",
-      "Committed small, reviewable changes with clear messages.",
-      "Ran a production build locally, then deployed from the main branch.",
-      "Verified the live URL, metadata and images after each deploy.",
-    ],
-    lessons: [
-      "Static content with no database removed an entire category of things that could break.",
-      "Keeping content in typed data files meant adding an item never touched a component.",
-      "Deploying from a repository made every change reversible.",
-    ],
+    closing:
+      "My approach emphasizes relevant information, organized records, and a clear structure that makes research easier to review and use.",
   },
 ];

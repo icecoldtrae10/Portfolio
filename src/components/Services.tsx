@@ -1,21 +1,20 @@
-import { Briefcase, CalendarDays, Code, Palette, Search, type LucideIcon } from "lucide-react";
+import { ClipboardList, Megaphone, Search, Send, type LucideIcon } from "lucide-react";
 
 import { services } from "@/data/services";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 
+/** Maps the `icon` key in `src/data/services.ts` to a Lucide line icon. */
 const ICONS: Record<string, LucideIcon> = {
-  calendar: CalendarDays,
-  palette: Palette,
-  briefcase: Briefcase,
+  megaphone: Megaphone,
   search: Search,
-  code: Code,
+  send: Send,
+  clipboard: ClipboardList,
 };
 
 /**
- * Service catalogue. Deliberately a numbered editorial list rather than a grid
- * of identical cards — and deliberately free of pricing, packages and any
- * promised outcome.
+ * Service catalogue — a numbered editorial list rather than a grid of
+ * identical cards, and free of pricing, packages or promised outcomes.
  */
 export default function Services() {
   return (
@@ -26,30 +25,33 @@ export default function Services() {
             eyebrow="Services"
             title={
               <span id="services-heading">
-                Five things I can take off your{" "}
-                <em className="font-display font-normal italic text-brand-700">list</em>.
+                Practical support for your{" "}
+                <em className="font-display font-normal italic text-brand-700">
+                  day-to-day operations
+                </em>
+                .
               </span>
             }
-            description="Practical, day-to-day support. I would rather describe what I actually do well than promise everything."
+            description="I provide support across content, research, outreach, and administrative tasks, helping businesses keep information organized, maintain consistent communication, and move projects forward."
           />
         </Reveal>
 
         <div className="mt-14 border-t border-mist-200">
           {services.map((service, index) => {
-            const Icon = ICONS[service.icon] ?? CalendarDays;
+            const Icon = ICONS[service.icon] ?? Megaphone;
 
             return (
               <Reveal
                 key={service.id}
                 delay={index * 40}
-                className="grid gap-6 border-b border-mist-200 py-10 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
+                className="group grid gap-6 border-b border-mist-200 py-10 transition-colors duration-200 hover:bg-brand-50/40 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
               >
-                <div>
+                <div className="lg:pl-2">
                   <div className="flex items-center gap-4">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-brand-200 bg-brand-50 text-brand-700 transition-colors duration-200 group-hover:border-brand-300 group-hover:bg-brand-100">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <span aria-hidden="true" className="font-display text-3xl leading-none text-brand-300">
+                    <span aria-hidden="true" className="font-display text-3xl leading-none text-brand-500">
                       {service.number}
                     </span>
                   </div>
@@ -68,7 +70,7 @@ export default function Services() {
                     {service.deliverables.map((item) => (
                       <li
                         key={item}
-                        className="rounded-full border border-mist-200 bg-mist-50 px-3.5 py-1.5 text-[0.8125rem] font-medium text-ink-800"
+                        className="rounded-full border border-mist-200 bg-white px-3.5 py-1.5 text-[0.8125rem] font-medium text-ink-800 transition-colors duration-200 hover:border-brand-300 hover:text-brand-800"
                       >
                         {item}
                       </li>
@@ -79,14 +81,6 @@ export default function Services() {
             );
           })}
         </div>
-
-        <Reveal>
-          <p className="mt-8 max-w-2xl text-[0.875rem] leading-relaxed text-mist-500">
-            No pricing is published because every engagement depends on scope, hours and
-            frequency. Tell me what you need handled and I will come back with a realistic
-            proposal.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

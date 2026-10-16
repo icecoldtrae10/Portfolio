@@ -28,7 +28,7 @@ export default function SectionHeading({
       <div
         className={`flex items-center gap-3 ${centered ? "justify-center" : ""}`}
       >
-        <span aria-hidden="true" className="h-px w-8 bg-brand-400" />
+        <span aria-hidden="true" className="accent-rule h-px w-8" />
         <span className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">
           {eyebrow}
         </span>

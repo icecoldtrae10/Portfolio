@@ -14,37 +14,53 @@
 }
 
 /* --------------------------------------------------------------------------
- * Palette — pale blue, deep navy, quiet neutrals
+ * Palette — white and pale blue surfaces, muted navy type, soft blue accents
+ * with an occasional touch of lavender.
+ *
+ * Every text colour here has been checked against white to at least 4.5:1
+ * (WCAG AA) except `mist-400`, which is only used for icons and placeholders.
  * ----------------------------------------------------------------------- */
 @theme {
-  /* Accent blues */
-  --color-brand-50: #f2f7fd;
-  --color-brand-100: #e3eefb;
-  --color-brand-200: #c9dff6;
-  --color-brand-300: #a3c8ee;
-  --color-brand-400: #74aae0;
-  --color-brand-500: #4a8cd1;
-  --color-brand-600: #2f72b5;
-  --color-brand-700: #265c93;
-  --color-brand-800: #1e4a76;
-  --color-brand-900: #1a3d61;
+  /* Soft blue accents */
+  --color-brand-50: #f3f8fe;
+  --color-brand-100: #e6eefb;
+  --color-brand-200: #cadff7;
+  --color-brand-300: #a5cbf0;
+  --color-brand-400: #79afe3;
+  --color-brand-500: #4e92d6;
+  --color-brand-600: #2e72b8;
+  --color-brand-700: #255d99;
+  --color-brand-800: #1f4c7d;
+  --color-brand-900: #1b3f66;
 
-  /* Deep navy — primary text */
-  --color-ink-950: #061423;
-  --color-ink-900: #0b1f33;
-  --color-ink-800: #143048;
-  --color-ink-700: #1f4562;
-  --color-ink-600: #33607f;
+  /* Occasional subtle lavender — used only for gradients and hairline accents */
+  --color-lilac-50: #f8f7fd;
+  --color-lilac-100: #f0eefb;
+  --color-lilac-200: #e2ddf8;
+  --color-lilac-300: #c9c3f1;
+  --color-lilac-400: #ab9fe6;
+  --color-lilac-600: #6d5fc4;
+
+  /* Muted navy — primary typography */
+  --color-ink-950: #0a1424;
+  --color-ink-900: #152539;
+  --color-ink-800: #25374d;
+  --color-ink-700: #3a4d64;
+  --color-ink-600: #556a82;
 
   /* Quiet neutrals */
-  --color-mist-50: #fbfcfd;
-  --color-mist-100: #f4f7fa;
-  --color-mist-200: #e7ecf2;
-  --color-mist-300: #d2dbe4;
-  --color-mist-400: #9fb0c2;
-  --color-mist-500: #6f8299;
-  --color-mist-600: #556779;
-  --color-mist-700: #3f4f5f;
+  --color-mist-50: #fbfcfe;
+  --color-mist-100: #f5f7fa;
+  --color-mist-200: #e9edf3;
+  --color-mist-300: #d5dce5;
+  --color-mist-400: #a1b0c1;
+  --color-mist-500: #607286;
+  --color-mist-600: #4f6076;
+  --color-mist-700: #3b4a5d;
+
+  /* Consistent, restrained motion across every interactive element. */
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* --------------------------------------------------------------------------
@@ -97,15 +113,55 @@
   }
 
   /* Keeps anchored sections clear of the sticky header. */
-  section[id],
-  div[id="work"],
-  div[id="contact"] {
+  section[id] {
     scroll-margin-top: 6rem;
   }
 
   ::selection {
     background-color: var(--color-brand-200);
     color: var(--color-ink-900);
+  }
+
+  /* Next/Image renders plain <img> elements; keep them from ever overflowing. */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  /* A single, restrained gradient accent — pale blue drifting into lavender.
+     Used sparingly for hero and section backdrops, never behind body text. */
+  .accent-gradient {
+    background-image: linear-gradient(
+      135deg,
+      var(--color-brand-100) 0%,
+      var(--color-lilac-100) 100%
+    );
+  }
+
+  /* Hairline version of the same pairing, for rules and borders. */
+  .accent-rule {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-brand-400) 0%,
+      var(--color-lilac-300) 100%
+    );
+  }
+
+  /* Thin-bordered surface used for cards. Restrained shadow only. */
+  .surface-card {
+    background-color: #ffffff;
+    border: 1px solid var(--color-mist-200);
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px rgb(21 37 57 / 0.04);
+    transition:
+      border-color var(--default-transition-duration)
+        var(--default-transition-timing-function),
+      box-shadow var(--default-transition-duration)
+        var(--default-transition-timing-function),
+      transform var(--default-transition-duration)
+        var(--default-transition-timing-function);
   }
 }
 

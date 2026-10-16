@@ -110,7 +110,7 @@ export default function Modal({
       document.body.style.paddingRight = previousPadding;
       triggerRef.current?.focus?.();
     };
-  }, [open]);
+  }, [open, handleKeyDown]);
 
   if (!open || !mounted) return null;
 

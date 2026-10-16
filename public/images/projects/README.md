@@ -1,31 +1,36 @@
-# Project images
+# Portfolio images
 
-Drop project thumbnails and screenshots here, then reference them from
+Drop approved work samples here, then reference them from
 `src/data/projects.ts`.
 
-## Adding a project image
+## Adding an image
 
-1. Export the image (WebP or PNG, at least **1600px wide** looks best).
-2. Save it in this folder, e.g. `recruitment-ad-series.webp`.
-3. Open `src/data/projects.ts` and set:
+1. Export the picture (WebP or PNG, at least **1600px wide** looks best).
+2. Save it in this folder, e.g. `recruitment-campaign-creative.webp`.
+3. Add an entry to `projects` in `src/data/projects.ts`:
 
    ```ts
    {
-     id: "recruitment-ad-series",
-     image: "/images/projects/recruitment-ad-series.webp",
+     id: "recruitment-campaign-creative",
+     title: "Recruitment Campaign Creative",
+     category: "Recruitment Campaigns",
+     image: "/images/projects/recruitment-campaign-creative.webp",
      imageAlt: "A Canva recruitment advertisement for a warehouse role.",
-     // ...
-   }
+     summary: "One sentence on what the piece is and who it was for.",
+   },
    ```
 
-4. Save. The card, the modal preview and the filter counts update automatically.
+4. Save. The card, the detail modal and the filter buttons all appear by
+   themselves.
 
 ## Rules of thumb
 
-- **Wide cards** use a 16:10 crop, **narrow cards** a 1:1 crop. Anything
-  reasonably landscape works — the site crops with `object-cover`.
-- Always fill in `imageAlt`. It is used by screen readers and search engines.
-- While `image` is left `undefined` the card shows an obvious empty slot. It
-  never shows a broken image, so it is always safe to publish mid-way.
+- The gallery ships **empty**. It stays that way until you add real work, and
+  projects without an `image` are never rendered — so there are no empty tiles
+  and no broken pictures.
+- Suggested `category` labels: Recruitment Campaign Creative · Social Media
+  Content · Campaign Announcement · Recruitment Information Post · Content
+  Design.
+- Always fill in `imageAlt` with an accurate description.
 - Do not upload client-confidential material, or anything you have not been
   given permission to publish.

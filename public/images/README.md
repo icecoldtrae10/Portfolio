@@ -1,21 +1,12 @@
 # Images
 
-- `projects/` — project thumbnails and case-study previews. See
+- `projects/` — portfolio images for the Work gallery. See
   [projects/README.md](projects/README.md).
-- `analytics/` — platform screenshots for the evidence gallery. See
-  [analytics/README.md](analytics/README.md).
+- `logos/` — official tool logos used in the Tools section. See
+  [logos/README.md](logos/README.md).
 
-## Portrait
+There is no portrait folder: this site deliberately has **no profile photo**, so
+the About section is text only and there is no image to upload there.
 
-To add a photo to the About section:
-
-1. Save it here as `portrait.jpg` (portrait orientation, roughly 1200×1500).
-2. Open `src/data/site.ts` and set:
-
-   ```ts
-   portrait: "/images/portrait.jpg",
-   portraitAlt: "Portrait of Your Name",
-   ```
-
-Until then the About section shows a monogram instead — no invented portrait
-and no broken image.
+There is no analytics folder either — the site does not display platform
+screenshots or metrics of any kind.

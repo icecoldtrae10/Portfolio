@@ -10,13 +10,11 @@
    resumeUrl: "/documents/resume.pdf",
    ```
 
-3. Save. Three places update at once:
-   - the résumé section button,
-   - the link in the About section,
-   - the link in the Contact sidebar.
+3. Save. The **View Résumé** button appears in the Résumé section.
 
-While `resumeUrl` is `null` the download button is visibly disabled and explains
-why — the site will never link to a file that is not there.
+While `resumeUrl` is `null` the button is not rendered at all — the section
+still shows its heading and description, but there is no disabled control and
+no link that could point at a missing file.
 
 ## Checklist before publishing
 

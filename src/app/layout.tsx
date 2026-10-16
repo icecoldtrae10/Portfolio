@@ -21,46 +21,50 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-const siteDescription = `${site.name} is a virtual assistant supporting remote teams with social media management, recruitment assistance, lead generation, content creation and administrative support.`;
+/** Approved page title. Change `site.name` and this follows automatically. */
+const pageTitle = `${site.name} | Virtual Assistant Portfolio`;
+
+/** Approved meta description. */
+const pageDescription =
+  "Explore Adrian Cadiao's portfolio in social media management, online research, manual outreach, lead generation, and administrative support.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: {
-    default: `${site.name} — Virtual Assistant for Social Media, Recruitment & Digital Operations`,
-    template: `%s — ${site.name}`,
-  },
-  description: siteDescription,
+  title: pageTitle,
+  description: pageDescription,
   keywords: [
     "virtual assistant",
-    "social media manager",
+    "Adrian Cadiao",
     "social media management",
-    "recruitment assistant",
-    "recruitment support",
+    "online research",
+    "manual outreach",
+    "cold email outreach",
     "lead generation",
     "lead research",
-    "cold email outreach",
-    "content creation",
-    "Canva design",
     "administrative support",
-    "remote assistant",
+    "recruitment assistant",
+    "recruitment support",
+    "content planning",
+    "Canva design",
     "Meta Business Suite",
-    "virtual assistant for small business",
+    "remote assistant",
+    "virtual assistant portfolio",
   ],
   authors: [{ name: site.name }],
   creator: site.name,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: site.url,
-    siteName: `${site.name} — Virtual Assistant`,
-    title: `${site.name} — Virtual Assistant for Social Media, Recruitment & Digital Operations`,
-    description: siteDescription,
+    url: "/",
+    siteName: pageTitle,
+    title: pageTitle,
+    description: pageDescription,
     locale: "en_US",
   },
   twitter: {
-    card: "summary_large_image",
-    title: `${site.name} — Virtual Assistant`,
-    description: siteDescription,
+    card: "summary",
+    title: pageTitle,
+    description: pageDescription,
   },
   robots: {
     index: true,

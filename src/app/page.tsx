@@ -1,33 +1,38 @@
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import Results from "@/components/Results";
-import CaseStudies from "@/components/CaseStudies";
-import Portfolio from "@/components/Portfolio";
+import SelectedWork from "@/components/SelectedWork";
 import Experience from "@/components/Experience";
-import About from "@/components/About";
+import Approach from "@/components/Approach";
 import Tools from "@/components/Tools";
-import ResumeSection from "@/components/ResumeSection";
+import About from "@/components/About";
 import Contact from "@/components/Contact";
 
 /**
- * The single page, top to bottom.
+ * Page composition — the section order, top to bottom.
  *
- * Section order matches the navigation order in `src/data/navigation.ts`
- * (Home → Services → Case Studies → Work → Experience → About → Contact);
- * Results, Tools and Résumé sit between them and are not listed in the menu.
+ * Every section owns its own background and top-level `id`, so the list below
+ * is the single place to reorder, add or remove one. The navigation in
+ * `src/data/navigation.ts` is a subset of these ids.
+ *
+ *   Hero → Services → Selected Work → Experience → How I Work → Tools →
+ *   About → Contact
+ *
+ * (There is no results/analytics band and no résumé section: neither has
+ * approved copy, so neither is rendered.)
+ *
+ * The `<main>` wrapper and the skip link live in `layout.tsx` — do not add a
+ * second one here.
  */
 export default function Home() {
   return (
     <>
       <Hero />
       <Services />
-      <Results />
-      <CaseStudies />
-      <Portfolio />
+      <SelectedWork />
       <Experience />
-      <About />
+      <Approach />
       <Tools />
-      <ResumeSection />
+      <About />
       <Contact />
     </>
   );

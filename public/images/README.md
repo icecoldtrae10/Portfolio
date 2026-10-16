@@ -1,7 +1,7 @@
 # Images
 
-- `projects/` — portfolio images for the Work gallery. See
-  [projects/README.md](projects/README.md).
+- `projects/` — optional visuals shown under a work sample in the "Work
+  Samples" section. See [projects/README.md](projects/README.md).
 - `logos/` — official tool logos used in the Tools section. See
   [logos/README.md](logos/README.md).
 

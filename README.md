@@ -1,7 +1,7 @@
 # Adrian Cadiao — Virtual Assistant Portfolio
 
 A single-page portfolio site covering social media management, online research,
-manual outreach, lead generation and administrative support.
+cold email outreach and administrative support.
 
 Built with **Next.js (App Router)**, **TypeScript** and **Tailwind CSS v4**.
 No database, no API, no paid services — it deploys as a static site.
@@ -33,46 +33,48 @@ You should never need to touch a component to add content. Everything lives in
 
 | File | What it controls |
 | --- | --- |
-| `src/data/site.ts` | **Start here.** Name, wordmark, role line, live URL, email, LinkedIn, résumé path |
-| `src/data/navigation.ts` | Menu labels, links and the "Let's Talk" button |
-| `src/data/services.ts` | The four services and their tags |
-| `src/data/results.ts` | The three "Selected results" statements |
-| `src/data/case-studies.ts` | The three case studies |
-| `src/data/projects.ts` | The work gallery (ships empty — see below) |
+| `src/data/site.ts` | **Start here.** Name, wordmark, role line, live URL, email, LinkedIn |
+| `src/data/navigation.ts` | Menu labels, links and the "Contact Me" button |
+| `src/data/services.ts` | The four services, their subtitles and their bullet lists |
+| `src/data/work-samples.ts` | The three "Work samples" and any visuals |
 | `src/data/experience.ts` | The two employers |
+| `src/data/approach.ts` | The four "How I work" steps |
 | `src/data/about.ts` | The four About paragraphs |
 | `src/data/tools.ts` | The two tool groups and their logo files |
-| `src/app/layout.tsx` | Page title, meta description, Open Graph tags |
+| `src/app/layout.tsx` | Page title, meta description, Open Graph / Twitter tags |
 
 Types for all of the above are in `src/data/types.ts`.
 
-Section order is set in `src/app/page.tsx`.
+Section order is set in `src/app/page.tsx`:
+
+```
+Hero → Services → Selected Work → Experience → How I Work → Tools → About → Contact
+```
+
+The navigation shows a subset of those ids (Home · Services · Work · Experience ·
+About · Contact); "How I Work" and "Tools" are on the page but not in the menu.
 
 ---
 
-## Adding a portfolio image
+## Adding a visual to a work sample
 
 1. Drop the picture in `public/images/projects/`.
-2. Open `src/data/projects.ts` and add an entry:
+2. Open `src/data/work-samples.ts` and add an `images` array to that sample:
 
    ```ts
-   {
-     id: "recruitment-campaign-creative",
-     title: "Recruitment Campaign Creative",
-     category: "Recruitment Campaigns",
-     image: "/images/projects/recruitment-campaign-creative.webp",
-     imageAlt: "A short, accurate description of the picture.",
-     summary: "One sentence on what the piece is and who it was for.",
-     tools: ["Canva", "Meta Business Suite"],
-   },
+   images: [
+     {
+       src: "/images/projects/recruitment-poster.webp",
+       alt: "A short, accurate description of the picture.",
+     },
+   ],
    ```
 
-3. Save. The card, the filter buttons and the detail modal all appear — and if
-   `projects` stays empty, the Work section simply shows its heading and
-   introduction with no grid at all.
+3. Save. The framed image grid appears under that sample — and until you do, the
+   sample simply renders as text with no empty frame and no broken picture.
 
-**Only add work you are allowed to publish**, and never invent a project to fill
-space.
+**Only add work you are allowed to publish**, and label recreated examples as
+demonstrations rather than completed client projects.
 
 ## Adding a tool logo
 
@@ -81,27 +83,32 @@ space.
    `src/data/tools.ts`.
 
 Leave `logo` out and a neutral icon is shown instead — never a broken image.
+Logos are referenced by filename and served as static files, so there is no
+runtime third-party request.
 
-## Adding your résumé
-
-Save the PDF at `public/documents/resume.pdf`, then set
-`resumeUrl: "/documents/resume.pdf"` in `src/data/site.ts`.
-
-Until then the **View Résumé button is not rendered at all** — there is no
-disabled control and no link that could 404.
+`public/images/logos/` also still holds the older technical marks (python,
+matlab, simulink, autocad, multisim, ltspice, arduino, tinkercad, java, c,
+cplusplus, labview, github, vercel). They are **unused on purpose** — the
+approved Tools section lists two groups only — so no downloading is needed if a
+"Technical and Engineering" group is ever added back.
 
 ---
 
 ## Content rules built into this project
 
-- **No fabricated numbers.** The site displays no metrics of any kind; the
-  "Selected results" section describes an approach instead of a figure.
-- **No client names, testimonials, dates or project results** appear anywhere.
+- **No fabricated numbers.** The site shows no metrics, percentages, client
+  counts, response rates or analytics of any kind.
+- **No client names, testimonials or project results** appear anywhere.
 - **No contact form.** "Email Me" opens the visitor's own mail application with
   the address already filled in, so nothing is silently discarded and no
   backend is required.
 - **No profile photo.** The About section is text only by design.
 - **No availability, working-hours or time-zone claims.**
+- **No résumé section.** The approved copy has none, so no PDF is expected and
+  no link can 404.
+- Section headings, service copy, work samples, experience entries and the
+  About paragraphs are all kept exactly as approved — edit them in `src/data/`
+  rather than in the components.
 
 ---
 
@@ -147,16 +154,15 @@ git push -u origin main
 
 ```
 public/
-  documents/        <- resume.pdf goes here
   images/
     logos/          <- official tool logos (SVG/PNG)
-    projects/       <- portfolio images
+    projects/       <- work sample visuals
 
 src/
   app/              <- page, layout, fonts, colours, SEO, sitemap, robots
   components/       <- the page sections
     icons/          <- inline SVG icons
-    ui/             <- button, modal, reveal, section heading
+    ui/             <- button, reveal, section heading
   data/             <- ALL editable content
   hooks/
 ```
@@ -166,12 +172,11 @@ src/
 ## Accessibility and performance notes
 
 - Semantic landmarks, one `h1`, ordered heading hierarchy.
-- Keyboard operable throughout: skip link, visible focus rings, focus-trapped
-  dialogs that restore focus on close.
+- Keyboard operable throughout: skip link and visible focus rings everywhere.
 - Text colours are checked against white to at least 4.5:1 (WCAG AA).
 - `prefers-reduced-motion` is honoured globally — reveals are disabled and
   scrolling becomes instant.
 - Reveal animations only activate when JavaScript is available, so no content
   is ever hidden from a no-JS visitor.
 - No animation libraries. Icons come from `lucide-react` plus one small inline
-  SVG; tool logos are static files, so there is no runtime third-party request.
+  SVG; tool logos are static files.

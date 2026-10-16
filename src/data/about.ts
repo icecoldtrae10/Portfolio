@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- *  ABOUT
+ *  ABOUT  —  "A LITTLE ABOUT ME"
  * ============================================================================
  * Four paragraphs, shown in the order they are written here.
  *
@@ -9,11 +9,11 @@
  */
 
 export const aboutIntro: string[] = [
-  "I'm Adrian Cadiao, a Virtual Assistant with experience in social media management, online research, manual outreach, and recruitment support.",
+  "I'm Adrian Cadiao, a Virtual Assistant with experience in social media management, online research, manual cold email outreach, and recruitment support.",
 
-  "I enjoy work that involves finding information, organizing details, and working through unfamiliar tasks. I approach new tools and processes with curiosity and a willingness to learn, while keeping the requirements of the task in focus.",
+  "I enjoy work that combines creativity with careful research. I might be preparing a social media campaign, compiling business information, writing a personalized email, or organizing records in a spreadsheet. I like understanding what a task requires and working through it in a clear, structured way.",
 
-  "I'm currently pursuing a Bachelor of Science in Electronics Engineering at the Technological Institute of the Philippines, with expected graduation in November 2027. My academic background complements my professional experience through an emphasis on structured thinking, technical problem-solving, and attention to detail.",
+  "I'm also pursuing a Bachelor of Science in Electronics Engineering at the Technological Institute of the Philippines, with expected graduation in November 2027. My studies complement my work through regular practice in technical thinking, problem-solving, and working with detailed information.",
 
-  "Across both work and study, I aim to approach tasks thoughtfully, communicate clearly, and follow through on responsibilities.",
+  "I'm open to working with VA agencies and individual clients who need support with content, research, outreach, or administrative tasks.",
 ];

@@ -25,17 +25,17 @@ export default function Contact() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-16">
           <Reveal className="min-w-0">
             <SectionHeading
-              eyebrow="Contact"
+              eyebrow="Let's Connect"
               title={
                 <span id="contact-heading">
-                  Let&apos;s discuss how I can{" "}
+                  Need an{" "}
                   <em className="font-display font-normal italic text-brand-700">
-                    support your work
-                  </em>
-                  .
+                    extra pair of hands
+                  </em>{" "}
+                  for your projects?
                 </span>
               }
-              description="For inquiries about social media management, research, outreach, or administrative support, you can reach me by email or connect with me on LinkedIn."
+              description="If you need support with social media content, online research, manual outreach, or administrative work, I'd be happy to discuss your requirements."
             />
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
@@ -59,11 +59,7 @@ export default function Contact() {
           {/* ------------------------------------------------- Direct details */}
           <Reveal delay={80}>
             <div className="surface-card h-full p-6 sm:p-7">
-              <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-mist-500">
-                Direct
-              </h3>
-
-              <ul className="mt-5 space-y-5">
+              <ul className="space-y-5">
                 <li>
                   <span className="flex items-center gap-2.5 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-brand-700">
                     <Mail className="h-3.5 w-3.5" aria-hidden="true" />
@@ -88,7 +84,7 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="mt-1.5 inline-flex items-center gap-1.5 break-all text-[0.9375rem] font-medium text-ink-900 underline-offset-4 transition-colors duration-200 hover:text-brand-700 hover:underline"
                   >
-                    {site.name}
+                    {site.linkedinLabel}
                     <ArrowUpRight className="h-4 w-4 shrink-0 text-mist-400" aria-hidden="true" />
                   </a>
                 </li>

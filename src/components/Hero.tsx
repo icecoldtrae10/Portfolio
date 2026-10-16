@@ -6,14 +6,11 @@ import Button from "@/components/ui/Button";
 /**
  * Hero — the approved introduction copy, and nothing else.
  *
- * The eyebrow and the supporting line are stored as single strings with "|"
- * and "·" separators so they can be edited without touching this file's layout.
+ * The eyebrow is stored as a single string with "·" separators so it can be
+ * edited without touching this file's layout.
  */
 
-const EYEBROW = "VIRTUAL ASSISTANT | SOCIAL MEDIA | RESEARCH | ADMINISTRATIVE SUPPORT";
-
-const SUPPORTING_LINE =
-  "Social Media Management · Online Research · Outreach · Administrative Support";
+const EYEBROW = "VIRTUAL ASSISTANT · SOCIAL MEDIA · RESEARCH · ADMIN SUPPORT";
 
 /** Renders a separator-delimited string with the separators tinted. */
 function Separated({ value, separator }: { value: string; separator: string }) {
@@ -47,25 +44,27 @@ export default function Hero() {
       <div className="relative mx-auto max-w-6xl px-5 pb-20 pt-28 sm:px-8 sm:pb-24 sm:pt-32 lg:pb-28 lg:pt-40">
         <Reveal>
           <p className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-brand-700 sm:text-xs">
-            <Separated value={EYEBROW} separator="|" />
+            <Separated value={EYEBROW} separator="·" />
           </p>
         </Reveal>
 
         <Reveal delay={80}>
           <h1 className="mt-7 max-w-4xl text-[2.25rem] font-semibold leading-[1.08] tracking-[-0.03em] text-ink-900 sm:text-5xl lg:text-[3.5rem]">
-            Reliable support for the work that{" "}
+            Creative support, thorough research, and{" "}
             <em className="font-display font-normal italic text-brand-700">
-              keeps your business moving.
+              dependable day-to-day assistance
             </em>
+            .
           </h1>
         </Reveal>
 
         <Reveal delay={140}>
           <p className="mt-7 max-w-2xl text-[1.0625rem] leading-relaxed text-mist-600 sm:text-lg">
-            I&apos;m Adrian Cadiao, a Virtual Assistant with experience in social media
-            management, online research, manual outreach, and recruitment support. I bring
-            a detail-oriented approach to everyday tasks, with a focus on clear
-            communication, organized workflows, and consistent execution.
+            I&apos;m Adrian, a Virtual Assistant with hands-on experience in social
+            media management, business research, personalized cold email outreach,
+            and recruitment support. From preparing social media content to
+            organizing research and handling routine administrative tasks, I can
+            support the work that keeps your projects moving.
           </p>
         </Reveal>
 
@@ -75,15 +74,9 @@ export default function Hero() {
               View My Work
             </Button>
             <Button href="#contact" variant="secondary">
-              Get in Touch
+              Contact Me
             </Button>
           </div>
-        </Reveal>
-
-        <Reveal delay={260}>
-          <p className="mt-12 flex max-w-3xl flex-wrap items-center gap-x-3 gap-y-2 border-t border-brand-200/80 pt-6 text-[0.8125rem] font-medium text-ink-700 sm:text-[0.875rem]">
-            <Separated value={SUPPORTING_LINE} separator="·" />
-          </p>
         </Reveal>
       </div>
     </section>

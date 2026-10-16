@@ -13,8 +13,11 @@ const ICONS: Record<string, LucideIcon> = {
 };
 
 /**
- * Service catalogue — a numbered editorial list rather than a grid of
+ * Service catalogue — a two-column editorial list rather than a grid of
  * identical cards, and free of pricing, packages or promised outcomes.
+ *
+ * Each entry carries its subtitle, paragraph and "Services include" bullets
+ * exactly as they appear in `src/data/services.ts`.
  */
 export default function Services() {
   return (
@@ -22,17 +25,17 @@ export default function Services() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <SectionHeading
-            eyebrow="Services"
+            eyebrow="What I can help with"
             title={
               <span id="services-heading">
-                Practical support for your{" "}
+                Practical support across content, research, and{" "}
                 <em className="font-display font-normal italic text-brand-700">
-                  day-to-day operations
+                  everyday tasks
                 </em>
                 .
               </span>
             }
-            description="I provide support across content, research, outreach, and administrative tasks, helping businesses keep information organized, maintain consistent communication, and move projects forward."
+            description="Whether you need help maintaining your social media presence, finding relevant business contacts, managing outreach, or keeping administrative work organized, I can assist with the tasks behind your day-to-day operations."
           />
         </Reveal>
 
@@ -51,28 +54,37 @@ export default function Services() {
                     <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-brand-200 bg-brand-50 text-brand-700 transition-colors duration-200 group-hover:border-brand-300 group-hover:bg-brand-100">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
-                    <span aria-hidden="true" className="font-display text-3xl leading-none text-brand-500">
-                      {service.number}
-                    </span>
                   </div>
 
                   <h3 className="mt-5 text-[1.4rem] font-semibold leading-snug tracking-[-0.02em] text-ink-900">
                     {service.title}
                   </h3>
+
+                  <p className="mt-2 font-display text-[1.125rem] italic leading-snug text-brand-700">
+                    {service.subtitle}
+                  </p>
                 </div>
 
-                <div>
+                <div className="min-w-0">
                   <p className="max-w-2xl text-[1.0625rem] leading-relaxed text-mist-600">
                     {service.description}
                   </p>
 
-                  <ul className="mt-6 flex flex-wrap gap-2">
-                    {service.deliverables.map((item) => (
+                  <h4 className="mt-7 text-[0.8125rem] font-semibold text-mist-500">
+                    Services include:
+                  </h4>
+
+                  <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                    {service.services.map((item) => (
                       <li
                         key={item}
-                        className="rounded-full border border-mist-200 bg-white px-3.5 py-1.5 text-[0.8125rem] font-medium text-ink-800 transition-colors duration-200 hover:border-brand-300 hover:text-brand-800"
+                        className="flex gap-2.5 text-[0.9375rem] leading-relaxed text-ink-800"
                       >
-                        {item}
+                        <span
+                          aria-hidden="true"
+                          className="mt-[0.65rem] h-1 w-1 shrink-0 rounded-full bg-brand-400"
+                        />
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>

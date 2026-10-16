@@ -18,17 +18,29 @@ filename in `src/data/tools.ts`.
 If a tool has no `logo` entry, a neutral icon is shown in its place — the site
 never renders a broken image.
 
-## Files currently in use
+## Files in use (two groups, nine tools)
 
 | File | Tool |
 | --- | --- |
 | `canva.svg` | Canva |
-| `meta.svg` | Meta Business Suite |
 | `facebook.svg` | Facebook |
+| `meta.svg` | Meta Business Suite |
 | `linkedin.svg` | LinkedIn |
+| `google.svg` | Google Search |
 | `google-sheets.svg` | Google Sheets |
-| `gmail.svg` | Gmail |
 | `microsoft-excel.svg` | Microsoft Excel |
+| `gmail.svg` | Gmail |
+| `microsoft-office.svg` | Microsoft Office |
+
+## Files kept but not currently used
+
+The approved Tools section lists two groups only, so these 14 marks are
+deliberately unreferenced. They cost ~160 KB and are left in place so a
+"Technical and Engineering" group can be added back without downloading
+anything — delete them if you would rather keep the folder tidy.
+
+| File | Tool |
+| --- | --- |
 | `python.svg` | Python |
 | `matlab.png` | MATLAB |
 | `simulink.png` | Simulink |

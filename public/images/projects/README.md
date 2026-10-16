@@ -1,36 +1,49 @@
-# Portfolio images
+# Work sample visuals
 
-Drop approved work samples here, then reference them from
-`src/data/projects.ts`.
+This folder is **optional**. The "Work Samples" section renders its three
+approved samples as text on its own, so an empty folder produces no empty
+frames and no broken pictures — only a missing picture would be worse, and
+there is no picture until you add one.
 
-## Adding an image
+## Adding one
 
-1. Export the picture (WebP or PNG, at least **1600px wide** looks best).
-2. Save it in this folder, e.g. `recruitment-campaign-creative.webp`.
-3. Add an entry to `projects` in `src/data/projects.ts`:
+1. Put the image here, e.g. `public/images/projects/recruitment-poster.webp`.
+2. Open `src/data/work-samples.ts` and add an `images` array to that sample:
 
    ```ts
-   {
-     id: "recruitment-campaign-creative",
-     title: "Recruitment Campaign Creative",
-     category: "Recruitment Campaigns",
-     image: "/images/projects/recruitment-campaign-creative.webp",
-     imageAlt: "A Canva recruitment advertisement for a warehouse role.",
-     summary: "One sentence on what the piece is and who it was for.",
-   },
+   images: [
+     {
+       src: "/images/projects/recruitment-poster.webp",
+       alt: "A Canva recruitment poster for a warehouse role.",
+     },
+   ],
    ```
 
-4. Save. The card, the detail modal and the filter buttons all appear by
-   themselves.
+3. Save. A framed image grid appears directly under that sample's
+   "What I contributed" block.
 
-## Rules of thumb
+`alt` describes the picture for screen readers and search engines — write what
+it shows, not "image" or the file name.
 
-- The gallery ships **empty**. It stays that way until you add real work, and
-  projects without an `image` are never rendered — so there are no empty tiles
-  and no broken pictures.
-- Suggested `category` labels: Recruitment Campaign Creative · Social Media
-  Content · Campaign Announcement · Recruitment Information Post · Content
-  Design.
-- Always fill in `imageAlt` with an accurate description.
-- Do not upload client-confidential material, or anything you have not been
-  given permission to publish.
+## What goes here
+
+The three samples expect these visuals:
+
+1. **Social Media Content & Campaigns** — approved recruitment posters, social
+   media graphics and published campaign posts.
+2. **Manual Cold Email Outreach** — a recreated outreach workflow, a fictional
+   prospect-tracking spreadsheet, or a redacted example containing no private
+   correspondence or contact information.
+3. **Business & Contact Research** — a recreated research spreadsheet using
+   fictional company names and contact details, or a visual showing the
+   research and organization process.
+
+## Before you publish
+
+- **Only display work samples you have permission to share.**
+- Label recreated examples as demonstrations rather than completed client
+  projects — the caption you write in `alt` (and the sample's own copy) is what
+  makes that clear.
+- Never include real candidates' details, client contacts or private
+  correspondence.
+- Never invent a project to fill space.

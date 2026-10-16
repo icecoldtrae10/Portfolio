@@ -1,19 +1,17 @@
 import { ArrowUpRight } from "lucide-react";
 
+import { navItems } from "@/data/navigation";
 import { site } from "@/data/site";
 
 /**
- * Footer — the approved link set (Home · Services · Work · About · Contact ·
- * LinkedIn) and the copyright line with a dynamic year.
+ * Footer — the approved link set (Home · Services · Work · Experience · About ·
+ * Contact · LinkedIn) and the copyright line with a dynamic year.
+ *
+ * The six internal links come straight from `navItems`; LinkedIn is appended
+ * here because it is external.
  */
 
-const footerLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Services", href: "#services" },
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
+const footerLinks = navItems;
 
 export default function SiteFooter() {
   const year = new Date().getFullYear();
@@ -37,10 +35,7 @@ export default function SiteFooter() {
           </div>
 
           <nav aria-label="Footer">
-            <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-mist-500">
-              Site
-            </h2>
-            <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2.5">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2.5">
               {footerLinks.map((item) => (
                 <li key={item.href}>
                   <a

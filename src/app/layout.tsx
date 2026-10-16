@@ -21,12 +21,19 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-/** Approved page title. Change `site.name` and this follows automatically. */
+/** Approved page title (browser tab and search result). */
 const pageTitle = `${site.name} | Virtual Assistant Portfolio`;
 
-/** Approved meta description. */
+/** Approved meta description (search result snippet). */
 const pageDescription =
-  "Explore Adrian Cadiao's portfolio in social media management, online research, manual outreach, lead generation, and administrative support.";
+  "Explore Adrian Cadiao's portfolio featuring social media management, Canva design, online research, manual cold email outreach, and administrative support.";
+
+/** Approved social sharing title — deliberately shorter than `pageTitle`. */
+const socialTitle = `${site.name} | Virtual Assistant`;
+
+/** Approved social sharing description. */
+const socialDescription =
+  "Social media, research, outreach, and administrative support from a Virtual Assistant with hands-on recruitment industry experience.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -36,17 +43,14 @@ export const metadata: Metadata = {
     "virtual assistant",
     "Adrian Cadiao",
     "social media management",
+    "Canva design",
     "online research",
-    "manual outreach",
     "cold email outreach",
-    "lead generation",
-    "lead research",
+    "manual outreach",
     "administrative support",
     "recruitment assistant",
     "recruitment support",
-    "content planning",
-    "Canva design",
-    "Meta Business Suite",
+    "spreadsheet organization",
     "remote assistant",
     "virtual assistant portfolio",
   ],
@@ -57,14 +61,14 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: pageTitle,
-    title: pageTitle,
-    description: pageDescription,
+    title: socialTitle,
+    description: socialDescription,
     locale: "en_US",
   },
   twitter: {
     card: "summary",
-    title: pageTitle,
-    description: pageDescription,
+    title: socialTitle,
+    description: socialDescription,
   },
   robots: {
     index: true,

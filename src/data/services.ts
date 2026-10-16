@@ -2,9 +2,10 @@ import type { Service } from "./types";
 
 /**
  * ============================================================================
- *  SERVICES
+ *  SERVICES  —  "WHAT I CAN HELP WITH"
  * ============================================================================
- * The four services, in the order they appear on the page.
+ * The four services, in the order they appear on the page. Each one carries a
+ * title, a one-line subtitle, a paragraph and its "Services include" bullets.
  *
  * The `icon` value maps to a Lucide icon in the `ICONS` table inside
  * `src/components/Services.tsx`. Existing keys: megaphone, search, send,
@@ -14,60 +15,62 @@ import type { Service } from "./types";
 export const services: Service[] = [
   {
     id: "social-media-management",
-    number: "01",
     title: "Social Media Management",
     icon: "megaphone",
+    subtitle: "From content research to publication.",
     description:
-      "I support the social media process from initial research and content planning to graphic design, caption writing, publishing, and audience engagement. My experience includes preparing recruitment campaigns and managing the day-to-day tasks behind social media content.",
-    deliverables: [
-      "Content Planning",
-      "Canva Design",
-      "Caption Writing",
-      "Publishing",
-      "Community Management",
+      "I create social media graphics in Canva, write captions, research relevant topics and job requirements, prepare hashtags, publish posts, and share content across relevant groups. My experience includes supporting recruitment campaigns and responding to audience inquiries.",
+    services: [
+      "Social media graphics and post design",
+      "Caption writing and hashtag research",
+      "Content preparation and publishing",
+      "Post distribution and audience engagement",
+      "Recruitment campaign content",
     ],
   },
   {
     id: "online-research",
-    number: "02",
     title: "Online Research",
     icon: "search",
+    subtitle: "Finding information and making it easier to use.",
     description:
-      "I research businesses, agencies, and relevant contacts, verify available information, and organize findings into structured records. I approach research methodically, paying attention to accuracy, relevance, and how the information will be used.",
-    deliverables: [
-      "Web Research",
-      "Company Research",
-      "Information Verification",
-      "Spreadsheet Organization",
+      "I research businesses, recruitment agencies, potential partners, and professional contacts using publicly available information. I organize findings in spreadsheets so information is easier to review, reference, and use for follow-up.",
+    services: [
+      "Company and business research",
+      "Contact research and data collection",
+      "Spreadsheet preparation and data organization",
+      "Information checking and verification",
+      "Online research for outreach and prospecting",
     ],
   },
   {
     id: "cold-email-outreach",
-    number: "03",
-    title: "Cold Email Outreach and Lead Generation",
+    title: "Cold Email Outreach",
     icon: "send",
+    subtitle: "Personalized emails backed by manual research.",
     description:
-      "My outreach experience combines business research with personalized communication. I identify relevant agencies and companies, review available information, prepare individual emails, send messages manually, track responses, and coordinate relevant prospects with management.",
-    deliverables: [
-      "Prospect Research",
-      "Personalized Outreach",
-      "Response Tracking",
-      "Follow-up Coordination",
+      "My experience includes researching relevant companies, reviewing their business information, preparing personalized cold emails, sending them manually, and tracking responses. I also forward relevant replies and potential partnerships to management for follow-up.",
+    services: [
+      "Prospect and company research",
+      "Personalized cold email writing",
+      "Manual email sending",
+      "Response tracking and follow-up coordination",
+      "Prospect list preparation",
     ],
   },
   {
     id: "administrative-support",
-    number: "04",
     title: "Administrative Support",
     icon: "clipboard",
+    subtitle: "Keeping routine tasks and information in order.",
     description:
-      "I assist with routine administrative tasks that require organization, accuracy, and follow-through. This includes updating spreadsheets, preparing documents, organizing files, coordinating schedules, and handling professional correspondence.",
-    deliverables: [
-      "Data Entry",
-      "Document Preparation",
-      "Scheduling",
-      "Email Correspondence",
-      "File Management",
+      "I assist with administrative tasks involving documents, spreadsheets, professional correspondence, and information management. I can help prepare and update records, organize files, and handle routine coordination that requires care and follow-through.",
+    services: [
+      "Data entry and spreadsheet updates",
+      "Document preparation and formatting",
+      "File and information organization",
+      "Email correspondence",
+      "Schedule and task coordination",
     ],
   },
 ];

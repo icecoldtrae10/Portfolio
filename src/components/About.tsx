@@ -11,18 +11,18 @@ export default function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="border-t border-mist-200 bg-white py-20 sm:py-28"
+      className="border-y border-mist-200 bg-mist-50 py-20 sm:py-28"
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-20">
           <Reveal className="lg:sticky lg:top-28 lg:self-start">
             <SectionHeading
-              eyebrow="About Me"
+              eyebrow="A Little About Me"
               title={
                 <span id="about-heading">
-                  A methodical approach, a{" "}
+                  A practical mindset, with{" "}
                   <em className="font-display font-normal italic text-brand-700">
-                    willingness to learn
+                    room to keep learning
                   </em>
                   .
                 </span>

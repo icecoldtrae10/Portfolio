@@ -25,15 +25,35 @@ export interface Service {
  * Work highlights & stats
  * ------------------------------------------------------------------ */
 
+export interface WorkHighlightPoint {
+  /**
+   * Rendered followed by a colon, e.g. "Net Follower Growth" shows as
+   * "Net Follower Growth: +16,086 (+804.2%)".
+   */
+  label: string;
+  /** Rendered in bold accent colour — the emphasis the design rules ask for. */
+  value: string;
+}
+
 export interface WorkHighlight {
   /** Stable id — used for React keys. Use kebab-case. */
   id: string;
+  /** The verified dashboard screenshot shown at the top of the card. */
+  image: {
+    /** Path under `public/`, e.g. "/images/stats/Portfolio Stats 1.jpg". */
+    src: string;
+    /** Intrinsic pixel size of the file — used to avoid layout shift. */
+    width: number;
+    height: number;
+    /** Short, accurate description of what the screenshot shows. */
+    alt: string;
+  };
   title: string;
-  /** The "Metric Tag" line, rendered as a cyan badge. */
+  /** The "Key Metric Badge" line, rendered as a cyan badge. */
   metric: string;
   description: string;
-  /** The "Key Items" line. */
-  keyItems: string;
+  /** The "Verified Dashboard Highlights" bullets. */
+  highlights: WorkHighlightPoint[];
 }
 
 /* ------------------------------------------------------------------ *

@@ -3,6 +3,12 @@ import type { ReactNode } from "react";
 interface SectionHeadingProps {
   /** The section heading, rendered as the `<h2>`. */
   title: ReactNode;
+  /**
+   * Optional approved badge pill, rendered between the rule and the heading.
+   * Only pass it where badge copy has been signed off (currently only the
+   * Work Highlights & Stats section).
+   */
+  badge?: string;
   /** Optional lede. Omit it entirely when no description has been approved. */
   description?: ReactNode;
   align?: "left" | "center";
@@ -12,12 +18,13 @@ interface SectionHeadingProps {
 /**
  * Shared section header: a short cyan rule above a white `<h2>`.
  *
- * There is deliberately no eyebrow label — this site has no approved eyebrow
- * copy, and inventing one would put words on the page that were never signed
- * off. Emphasis comes from weight and the accent colour only.
+ * A badge pill is rendered only where approved badge copy exists — this site
+ * invents no eyebrow labels, because that would put words on the page that
+ * were never signed off. Emphasis comes from weight and the accent colour.
  */
 export default function SectionHeading({
   title,
+  badge,
   description,
   align = "left",
   className = "",
@@ -32,6 +39,12 @@ export default function SectionHeading({
         aria-hidden="true"
         className={`accent-rule block h-px w-12 ${centered ? "mx-auto" : ""}`}
       />
+
+      {badge ? (
+        <span className="mt-4 inline-flex max-w-full flex-wrap items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[0.6875rem] font-bold leading-snug tracking-[0.12em] text-accent">
+          {badge}
+        </span>
+      ) : null}
 
       <h2 className="mt-5 text-3xl font-semibold leading-[1.12] tracking-[-0.022em] text-heading sm:text-4xl lg:text-[2.75rem]">
         {title}

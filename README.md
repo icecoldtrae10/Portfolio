@@ -56,7 +56,7 @@ You should never need to touch a component to add content. Everything lives in
 | `src/data/site.ts` | **Start here.** Name, wordmark, live URL, email, LinkedIn |
 | `src/data/navigation.ts` | Menu labels, links and the "Contact Me" button |
 | `src/data/services.ts` | The four services — title, summary and bullet list |
-| `src/data/work-highlights.ts` | The three "Work Highlights & Stats" cards and their metric tags |
+| `src/data/work-highlights.ts` | The three "Work Highlights & Stats" cards — screenshot, metric badge and verified highlights |
 | `src/data/experience.ts` | The four employers, locations, roles, dates and points |
 | `src/data/tools.ts` | The four tool groups and their logo files |
 | `src/data/about.ts` | The two About Me paragraphs |
@@ -77,32 +77,24 @@ scroll-spy simply holds the last link while passing through it.
 
 ---
 
-## Adding a visual to a work highlight
+## The dashboard screenshots
 
-Each of the three cards in "Work Highlights & Stats" renders an **empty media
-slot** above its text — a 16:9 container reserved for the image or video sample
-that has not been supplied yet. The slot is `aria-hidden` and carries no
-placeholder wording, because no placeholder wording has been approved.
+Each of the three cards in "Work Highlights & Stats" leads with its verified
+dashboard screenshot from `public/images/stats/`, stored as a fixed 16:9 plate
+(`rounded-xl`, `border-white/10`, `bg-slate-900/50`, dark backing so the white
+dashboards read cleanly). The dashboards are far too dense to read at card
+width, so clicking one — or pressing Enter on it — opens a full-screen
+preview: Escape, the backdrop or the close button dismisses it, and Left/Right
+arrows step between the three.
 
-To fill one:
+Files, pixel sizes and `alt` text all live in
+`src/data/work-highlights.ts`; see `public/images/stats/README.md` for how to
+swap one.
 
-1. Drop the picture or video poster in `public/images/projects/`.
-2. Add an `images` field to `WorkHighlight` in `src/data/types.ts`:
-
-   ```ts
-   /**
-    * Optional approved visuals for this highlight.
-    */
-   images?: { src: string; alt: string }[];
-   ```
-
-3. Render it inside the slot in `src/components/WorkHighlights.tsx` in place of
-   the empty `div`, passing a `src` and a short, accurate `alt`.
-
-Until then the slot renders empty — no broken picture, no invented caption.
-
-**Only add work you are allowed to publish**, and label recreated examples as
-demonstrations rather than completed client projects.
+**Only display visuals you are allowed to publish**, and keep private details
+(candidate names, contacts, client identifiers) cropped out of every
+screenshot. Recreated examples must be labelled as demonstrations rather than
+completed client projects.
 
 ## Adding a tool logo
 

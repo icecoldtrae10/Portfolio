@@ -1,13 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="YN">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MAC">
+  <!--
+    Monogram favicon. Three initials need a smaller face than two would, so the
+    size and letter-spacing below are measured rather than guessed: at 20px/0.5
+    the "MAC" ink is ~45 units wide inside the 64 unit tile (~9.5 units of
+    side padding) and the centred cap-height baseline lands on y=39.
+  -->
   <rect width="64" height="64" rx="14" fill="#0b1f33" />
   <text
     x="32"
-    y="41"
+    y="39"
     text-anchor="middle"
     font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
-    font-size="24"
+    font-size="20"
     font-weight="600"
-    letter-spacing="1"
+    letter-spacing="0.5"
     fill="#ffffff"
-  >YN</text>
+  >MAC</text>
 </svg>

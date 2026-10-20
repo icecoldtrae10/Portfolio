@@ -1,49 +1,53 @@
-# Work sample visuals
+# Work highlight visuals
 
-This folder is **optional**. The "Work Samples" section renders its three
-approved samples as text on its own, so an empty folder produces no empty
-frames and no broken pictures — only a missing picture would be worse, and
-there is no picture until you add one.
+This folder backs the three **empty media slots** in the "Work Highlights &
+Stats" section. Each card already renders a 16:9 slot above its text, waiting
+for an approved image or video sample.
+
+The slot is deliberately blank: it is `aria-hidden` and carries no placeholder
+wording, because no placeholder wording has been approved. An empty folder
+therefore produces no broken picture and no invented caption.
 
 ## Adding one
 
-1. Put the image here, e.g. `public/images/projects/recruitment-poster.webp`.
-2. Open `src/data/work-samples.ts` and add an `images` array to that sample:
+1. Put the image here, e.g. `public/images/projects/audience-growth.webp`.
+2. Add an `images` field to `WorkHighlight` in `src/data/types.ts`:
+
+   ```ts
+   /**
+    * Optional approved visuals for this highlight.
+    */
+   images?: { src: string; alt: string }[];
+   ```
+
+3. Set it on the card in `src/data/work-highlights.ts`:
 
    ```ts
    images: [
      {
-       src: "/images/projects/recruitment-poster.webp",
-       alt: "A Canva recruitment poster for a warehouse role.",
+       src: "/images/projects/audience-growth.webp",
+       alt: "A short, accurate description of what the picture shows.",
      },
    ],
    ```
 
-3. Save. A framed image grid appears directly under that sample's
-   "What I contributed" block.
+4. In `src/components/WorkHighlights.tsx`, render the array inside the slot
+   instead of the empty `div`.
 
 `alt` describes the picture for screen readers and search engines — write what
 it shows, not "image" or the file name.
 
-## What goes here
+## Which card is which
 
-The three samples expect these visuals:
-
-1. **Social Media Content & Campaigns** — approved recruitment posters, social
-   media graphics and published campaign posts.
-2. **Manual Cold Email Outreach** — a recreated outreach workflow, a fictional
-   prospect-tracking spreadsheet, or a redacted example containing no private
-   correspondence or contact information.
-3. **Business & Contact Research** — a recreated research spreadsheet using
-   fictional company names and contact details, or a visual showing the
-   research and organization process.
+1. **Organic Social Audience Scaling**
+2. **International B2B Cold Outreach**
+3. **High-Volume Candidate Processing**
 
 ## Before you publish
 
-- **Only display work samples you have permission to share.**
+- **Only display visuals you have permission to share.**
 - Label recreated examples as demonstrations rather than completed client
-  projects — the caption you write in `alt` (and the sample's own copy) is what
-  makes that clear.
+  projects — the caption you write in `alt` is what makes that clear.
 - Never include real candidates' details, client contacts or private
   correspondence.
-- Never invent a project to fill space.
+- Never invent a project to fill a slot.

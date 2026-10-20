@@ -1,47 +1,55 @@
 import type { ToolGroup } from "./types";
 
 /**
- * ============================================================================
- *  TOOLS I USE
- * ============================================================================
- * Two groups. Both are shown as labelled cards with official logos — no
- * proficiency levels, no badges, no claims.
+ * Tools & software — four labelled groups.
  *
- * ADDING A TOOL
- *   1. Drop the logo file in        public/images/logos/
- *   2. Add { name: "Tool name", logo: "tool-name.svg" } to the right group.
- *   3. Leave `logo` out entirely and a neutral icon is shown instead — never
- *      a broken image, and never an emoji.
+ * Every logo lives in `public/images/logos/` and is referenced by filename
+ * here. A tool with no `logo` entry falls back to a neutral glyph, never a
+ * broken image.
  *
- * Only list tools you have personally used. Alt text is generated from
- * `name`, so keep names accurate and recognisable.
- *
- * The logo folder also still holds the older technical marks (python, matlab,
- * simulink, autocad, multisim, ltspice, arduino, tinkercad, java, c, cplusplus,
- * labview, github, vercel). They are intentionally unused, so adding a
- * "Technical and Engineering" group again needs no downloading.
+ * No proficiency levels or badges are shown — only names and official marks.
+ * Files in that folder which none of these entries reference are documented
+ * in `public/images/logos/README.md` as deliberately unused.
  */
-
 export const toolGroups: ToolGroup[] = [
   {
-    id: "social-media-design",
-    title: "Social media and design",
+    id: "business-productivity",
+    title: "Business & Productivity",
+    tools: [
+      { name: "Google Workspace", logo: "google.svg" },
+      { name: "Microsoft Excel", logo: "microsoft-excel.svg" },
+      { name: "Google Sheets", logo: "google-sheets.svg" },
+    ],
+  },
+  {
+    id: "design-social-media",
+    title: "Design & Social Media",
     tools: [
       { name: "Canva", logo: "canva.svg" },
-      { name: "Facebook", logo: "facebook.svg" },
-      { name: "Meta Business Suite", logo: "meta.svg" },
+      { name: "Facebook Business Suite", logo: "meta.svg" },
+      { name: "Instagram", logo: "instagram.svg" },
       { name: "LinkedIn", logo: "linkedin.svg" },
     ],
   },
   {
-    id: "research-productivity",
-    title: "Research and productivity",
+    id: "web-technical",
+    title: "Web & Technical",
     tools: [
-      { name: "Google Search", logo: "google.svg" },
-      { name: "Google Sheets", logo: "google-sheets.svg" },
-      { name: "Microsoft Excel", logo: "microsoft-excel.svg" },
-      { name: "Gmail", logo: "gmail.svg" },
-      { name: "Microsoft Office", logo: "microsoft-office.svg" },
+      { name: "Python (Basic Data Extraction)", logo: "python.svg" },
+      { name: "HTML", logo: "html5.svg" },
+      { name: "GitHub", logo: "github.svg" },
+      { name: "Vercel", logo: "vercel.svg" },
+    ],
+  },
+  {
+    id: "engineering-software",
+    title: "Engineering Software",
+    tools: [
+      { name: "MATLAB", logo: "matlab.png" },
+      { name: "Simulink", logo: "simulink.png" },
+      { name: "AutoCAD", logo: "autocad.svg" },
+      { name: "LTspice", logo: "ltspice.svg" },
+      { name: "Multisim", logo: "multisim.svg" },
     ],
   },
 ];

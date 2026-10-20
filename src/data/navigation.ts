@@ -6,9 +6,9 @@
  * `href` must start with "#" and match the `id` of a section in
  * `src/app/page.tsx`.
  *
- * The link set follows the footer list: Home · Services · Work · Experience ·
- * About · Contact. "How I Work" and "Tools" are on the page but not in the
- * menu — the scroll-spy simply skips them.
+ * The link set is Home · Services · Work · Experience · About · Contact.
+ * "Tools & Software" is on the page but not in the menu — the scroll-spy
+ * simply skips it.
  */
 
 export interface NavItem {

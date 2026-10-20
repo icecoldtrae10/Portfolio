@@ -1,4 +1,10 @@
-import { ClipboardList, Megaphone, Search, Send, type LucideIcon } from "lucide-react";
+import {
+  ClipboardList,
+  Megaphone,
+  Search,
+  Send,
+  type LucideIcon,
+} from "lucide-react";
 
 import { services } from "@/data/services";
 import Reveal from "@/components/ui/Reveal";
@@ -13,82 +19,61 @@ const ICONS: Record<string, LucideIcon> = {
 };
 
 /**
- * Service catalogue — a two-column editorial list rather than a grid of
- * identical cards, and free of pricing, packages or promised outcomes.
+ * Services — four dark cards, each with its approved summary and bullet list.
  *
- * Each entry carries its subtitle, paragraph and "Services include" bullets
- * exactly as they appear in `src/data/services.ts`.
+ * There is no section lede: the brief supplied a heading and four service
+ * entries and nothing else, so nothing is invented to fill the gap.
  */
 export default function Services() {
   return (
-    <section id="services" aria-labelledby="services-heading" className="bg-white py-20 sm:py-28">
+    <section
+      id="services"
+      aria-labelledby="services-heading"
+      className="border-t border-white/10 py-20 sm:py-28"
+    >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
-          <SectionHeading
-            eyebrow="What I can help with"
-            title={
-              <span id="services-heading">
-                Practical support across content, research, and{" "}
-                <em className="font-display font-normal italic text-brand-700">
-                  everyday tasks
-                </em>
-                .
-              </span>
-            }
-            description="Whether you need help maintaining your social media presence, finding relevant business contacts, managing outreach, or keeping administrative work organized, I can assist with the tasks behind your day-to-day operations."
-          />
+          <SectionHeading title={<span id="services-heading">Services</span>} />
         </Reveal>
 
-        <div className="mt-14 border-t border-mist-200">
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
           {services.map((service, index) => {
             const Icon = ICONS[service.icon] ?? Megaphone;
 
             return (
               <Reveal
                 key={service.id}
-                delay={index * 40}
-                className="group grid gap-6 border-b border-mist-200 py-10 transition-colors duration-200 hover:bg-brand-50/40 lg:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] lg:gap-16 lg:py-12"
+                delay={index * 50}
+                className="min-w-0 h-full"
               >
-                <div className="lg:pl-2">
-                  <div className="flex items-center gap-4">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-brand-200 bg-brand-50 text-brand-700 transition-colors duration-200 group-hover:border-brand-300 group-hover:bg-brand-100">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                  </div>
+                <article className="surface-card flex h-full flex-col p-6 hover:border-accent/40 sm:p-7">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
 
-                  <h3 className="mt-5 text-[1.4rem] font-semibold leading-snug tracking-[-0.02em] text-ink-900">
+                  <h3 className="mt-5 text-[1.2rem] font-semibold leading-snug tracking-[-0.02em] text-heading">
                     {service.title}
                   </h3>
 
-                  <p className="mt-2 font-display text-[1.125rem] italic leading-snug text-brand-700">
-                    {service.subtitle}
-                  </p>
-                </div>
-
-                <div className="min-w-0">
-                  <p className="max-w-2xl text-[1.0625rem] leading-relaxed text-mist-600">
-                    {service.description}
+                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-body">
+                    {service.summary}
                   </p>
 
-                  <h4 className="mt-7 text-[0.8125rem] font-semibold text-mist-500">
-                    Services include:
-                  </h4>
-
-                  <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-                    {service.services.map((item) => (
+                  <ul className="mt-5 space-y-2.5 border-t border-white/10 pt-5">
+                    {service.items.map((item) => (
                       <li
                         key={item}
-                        className="flex gap-2.5 text-[0.9375rem] leading-relaxed text-ink-800"
+                        className="flex gap-2.5 text-[0.9375rem] leading-relaxed text-body"
                       >
                         <span
                           aria-hidden="true"
-                          className="mt-[0.65rem] h-1 w-1 shrink-0 rounded-full bg-brand-400"
+                          className="mt-[0.62rem] h-1 w-1 shrink-0 rounded-full bg-accent"
                         />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </article>
               </Reveal>
             );
           })}

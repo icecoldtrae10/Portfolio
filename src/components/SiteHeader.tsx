@@ -40,22 +40,23 @@ export default function SiteHeader() {
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${
         scrolled || open
-          ? "border-b border-mist-200 bg-white/85 backdrop-blur-md"
-          : "border-b border-transparent bg-white/0"
+          ? "border-b border-white/10 bg-abyss/85 backdrop-blur-md"
+          : "border-b border-transparent bg-abyss/0"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-5 px-5 sm:px-8 lg:h-[4.5rem]">
-        {/* Wordmark */}
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:gap-5 sm:px-8 lg:h-[4.5rem]">
+        {/* Wordmark — allowed to shrink and wrap so the full name never pushes
+            the header wider than the viewport on small screens. */}
         <a
           href="#home"
-          className="group flex shrink-0 items-center gap-2.5 rounded-full"
+          className="group flex min-w-0 items-start gap-2.5 py-2"
           onClick={() => setOpen(false)}
         >
           <span
             aria-hidden="true"
-            className="h-2.5 w-2.5 rounded-full bg-brand-600 transition-colors duration-200 group-hover:bg-lilac-400"
+            className="mt-[0.3rem] h-2.5 w-2.5 shrink-0 rounded-full bg-accent transition-colors duration-200 group-hover:bg-accent-hi"
           />
-          <span className="text-[0.95rem] font-semibold tracking-[-0.01em] text-ink-900">
+          <span className="min-w-0 text-[0.95rem] font-semibold leading-tight tracking-[-0.01em] text-heading [overflow-wrap:anywhere]">
             {site.wordmark}
           </span>
         </a>
@@ -70,14 +71,14 @@ export default function SiteHeader() {
                 href={item.href}
                 aria-current={isActive ? "location" : undefined}
                 className={`relative whitespace-nowrap rounded-md px-2.5 py-2 text-[0.8125rem] font-medium transition-colors duration-200 ${
-                  isActive ? "text-ink-900" : "text-mist-600 hover:text-ink-900"
+                  isActive ? "text-accent" : "text-muted hover:text-heading"
                 }`}
               >
                 {item.label}
                 {isActive ? (
                   <span
                     aria-hidden="true"
-                    className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-brand-600"
+                    className="absolute inset-x-2.5 -bottom-0.5 h-[2px] rounded-full bg-accent"
                   />
                 ) : null}
               </a>
@@ -88,7 +89,7 @@ export default function SiteHeader() {
         <div className="flex shrink-0 items-center gap-2">
           <a
             href={navCta.href}
-            className="inline-flex items-center gap-1.5 rounded-full bg-brand-600 px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-brand-700"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-accent px-3.5 py-2 text-[0.8125rem] font-semibold whitespace-nowrap text-abyss transition-colors duration-200 hover:bg-accent-hi sm:px-4 sm:text-sm"
           >
             {navCta.label}
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -101,7 +102,7 @@ export default function SiteHeader() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-mist-200 text-ink-800 transition-colors duration-200 hover:bg-mist-50 lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-body transition-colors duration-200 hover:border-accent hover:text-accent lg:hidden"
           >
             {open ? (
               <X className="h-5 w-5" aria-hidden="true" />
@@ -116,7 +117,7 @@ export default function SiteHeader() {
       <div
         id="mobile-menu"
         hidden={!open}
-        className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-mist-200 bg-white lg:hidden"
+        className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-abyss lg:hidden"
       >
         <nav aria-label="Mobile" className="mx-auto max-w-6xl px-5 py-4 sm:px-8">
           <ul className="flex flex-col">
@@ -128,15 +129,15 @@ export default function SiteHeader() {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     aria-current={isActive ? "location" : undefined}
-                    className={`flex items-center justify-between border-b border-mist-100 py-3.5 text-[0.95rem] font-medium transition-colors duration-200 ${
-                      isActive ? "text-brand-700" : "text-ink-800 hover:text-brand-700"
+                    className={`flex items-center justify-between border-b border-white/10 py-3.5 text-[0.95rem] font-medium transition-colors duration-200 ${
+                      isActive ? "text-accent" : "text-body hover:text-accent"
                     }`}
                   >
                     {item.label}
                     {isActive ? (
                       <span
                         aria-hidden="true"
-                        className="h-1.5 w-1.5 rounded-full bg-brand-600"
+                        className="h-1.5 w-1.5 rounded-full bg-accent"
                       />
                     ) : null}
                   </a>
@@ -148,7 +149,7 @@ export default function SiteHeader() {
           <a
             href={navCta.href}
             onClick={() => setOpen(false)}
-            className="mt-5 flex items-center justify-center gap-1.5 rounded-full bg-brand-600 px-4 py-3 text-sm font-medium text-white transition-colors duration-200 hover:bg-brand-700"
+            className="mt-5 flex items-center justify-center gap-1.5 rounded-full bg-accent px-4 py-3 text-sm font-semibold text-abyss transition-colors duration-200 hover:bg-accent-hi"
           >
             {navCta.label}
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

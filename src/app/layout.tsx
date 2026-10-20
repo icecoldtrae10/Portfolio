@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Instrument_Serif } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 
 import SiteHeader from "@/components/SiteHeader";
@@ -7,17 +7,14 @@ import SiteFooter from "@/components/SiteFooter";
 import BackToTop from "@/components/BackToTop";
 import { site } from "@/data/site";
 
+/**
+ * One clean sans-serif face for the whole page. There is deliberately no
+ * serif, script or cursive family in this project — emphasis is carried by
+ * weight and the cyan accent only.
+ */
 const geistSans = Geist({
   subsets: ["latin"],
   variable: "--font-geist-sans",
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  variable: "--font-instrument-serif",
   display: "swap",
 });
 
@@ -77,8 +74,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
-  colorScheme: "light",
+  themeColor: "#0b132b",
+  colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
 };
@@ -87,10 +84,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${instrumentSerif.variable}`}
-    >
+    <html lang="en" className={geistSans.variable}>
       <body>
         {/* Marks the document as JS-enabled so the reveal animations can hide
             content before it scrolls in. Without JS these rules never match

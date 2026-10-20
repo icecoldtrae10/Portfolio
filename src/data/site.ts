@@ -2,8 +2,8 @@
  * ============================================================================
  *  SITE / PERSONAL DETAILS  —  EDIT THIS FILE FIRST
  * ============================================================================
- * Every value below is live copy used by the footer, contact buttons and
- * page metadata.
+ * Every value below is live copy used by the header, the contact section, the
+ * footer and the page metadata.
  *
  * Nothing here is confidential — do not put anything you would not want public.
  */
@@ -14,13 +14,10 @@ export const site = {
    * ------------------------------------------------------------------ */
 
   /** Your name. Used for the wordmark, the footer and the page title. */
-  name: "Adrian Cadiao",
+  name: "Manuel Adrian Cadiao",
 
   /** Short wordmark shown in the navigation. Keep it to 1–2 words/lines. */
-  wordmark: "Adrian Cadiao",
-
-  /** Your professional title, also used as the footer line. */
-  role: "Virtual Assistant | Social Media, Research, Outreach & Administrative Support",
+  wordmark: "Manuel Adrian Cadiao",
 
   /**
    * The live URL of the site (no trailing slash). Used for the canonical link,
@@ -36,9 +33,9 @@ export const site = {
   /** Powers every `mailto:` link in the contact section. */
   email: "manuelacadiao@gmail.com",
 
-  /** Full LinkedIn profile URL — used by the contact and footer links. */
-  linkedin: "https://www.linkedin.com/in/adrian-cadiao-829907269/",
-
-  /** Short form shown as the visible label of the LinkedIn link. */
-  linkedinLabel: "linkedin.com/in/adrian-cadiao-829907269/",
+  /**
+   * Full LinkedIn profile URL — used by the contact and footer links, and
+   * shown as the visible link text in the contact section.
+   */
+  linkedin: "https://www.linkedin.com/in/manuel-adrian-cadiao/",
 };

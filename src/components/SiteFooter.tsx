@@ -4,11 +4,12 @@ import { navItems } from "@/data/navigation";
 import { site } from "@/data/site";
 
 /**
- * Footer — the approved link set (Home · Services · Work · Experience · About ·
- * Contact · LinkedIn) and the copyright line with a dynamic year.
+ * Footer — the navigation link set plus LinkedIn, and the copyright line with
+ * a dynamic year.
  *
  * The six internal links come straight from `navItems`; LinkedIn is appended
- * here because it is external.
+ * here because it is external. The contact details themselves live in the
+ * Contact section, so they are not repeated here.
  */
 
 const footerLinks = navItems;
@@ -17,22 +18,18 @@ export default function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-mist-200 bg-white">
+    <footer className="border-t border-white/10 bg-abyss">
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-        <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
-          <div className="max-w-sm">
-            <p className="flex items-center gap-2.5">
-              <span
-                aria-hidden="true"
-                className="h-2.5 w-2.5 rounded-full bg-brand-600"
-              />
-              <span className="text-[0.95rem] font-semibold tracking-[-0.01em] text-ink-900">
-                {site.name}
-              </span>
-            </p>
-
-            <p className="mt-4 text-[0.875rem] leading-relaxed text-mist-600">{site.role}</p>
-          </div>
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="flex items-center gap-2.5">
+            <span
+              aria-hidden="true"
+              className="h-2.5 w-2.5 rounded-full bg-accent"
+            />
+            <span className="text-[0.95rem] font-semibold tracking-[-0.01em] text-heading">
+              {site.name}
+            </span>
+          </p>
 
           <nav aria-label="Footer">
             <ul className="flex flex-wrap gap-x-6 gap-y-2.5">
@@ -40,7 +37,7 @@ export default function SiteFooter() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-[0.875rem] text-ink-800 transition-colors duration-200 hover:text-brand-700"
+                    className="text-[0.875rem] text-body transition-colors duration-200 hover:text-accent"
                   >
                     {item.label}
                   </a>
@@ -51,17 +48,20 @@ export default function SiteFooter() {
                   href={site.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[0.875rem] text-ink-800 transition-colors duration-200 hover:text-brand-700"
+                  className="inline-flex items-center gap-1 text-[0.875rem] text-body transition-colors duration-200 hover:text-accent"
                 >
                   LinkedIn
-                  <ArrowUpRight className="h-3.5 w-3.5 text-mist-400" aria-hidden="true" />
+                  <ArrowUpRight
+                    className="h-3.5 w-3.5 text-muted"
+                    aria-hidden="true"
+                  />
                 </a>
               </li>
             </ul>
           </nav>
         </div>
 
-        <p className="mt-12 border-t border-mist-100 pt-6 text-[0.75rem] text-mist-500">
+        <p className="mt-10 border-t border-white/10 pt-6 text-[0.75rem] text-muted">
           © {year} {site.name}. All rights reserved.
         </p>
       </div>

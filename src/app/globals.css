@@ -1,94 +1,44 @@
 @import "tailwindcss";
 
 /* --------------------------------------------------------------------------
- * Fonts
- * `inline` keeps the next/font variables inlined into the utilities so the
- * faces resolve correctly at the html element.
+ * Fonts — one clean sans face for the whole page.
+ * Geist Sans is registered in `layout.tsx` and inlined into the utilities here
+ * so it resolves at the html element. There is deliberately no serif, script
+ * or cursive face anywhere in this project.
  * ----------------------------------------------------------------------- */
 @theme inline {
   --font-sans:
     var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif;
-  --font-display:
-    var(--font-instrument-serif), ui-serif, Georgia, "Times New Roman", serif;
 }
 
 /* --------------------------------------------------------------------------
- * Palette — white and pale blue surfaces, muted navy type, soft blue accents
- * with an occasional touch of lavender.
+ * Palette — dark slate / deep navy surfaces, cyan accent, white headings and
+ * light-grey body copy.
  *
- * Every text colour here has been checked against white to at least 4.5:1
- * (WCAG AA) except `mist-400`, which is only used for icons and placeholders.
+ * Contrast against the #0b132b page background:
+ *   #ffffff  ~18.9:1   headings
+ *   #e2e8f0  ~13.6:1   body text
+ *   #94a3b8  ~6.7:1    secondary text
+ *   #00b4d8  ~6.9:1    accent text, rules, tags
  * ----------------------------------------------------------------------- */
 @theme {
-  /* Soft blue accents */
-  --color-brand-50: #f3f8fe;
-  --color-brand-100: #e6eefb;
-  --color-brand-200: #cadff7;
-  --color-brand-300: #a5cbf0;
-  --color-brand-400: #79afe3;
-  --color-brand-500: #4e92d6;
-  --color-brand-600: #2e72b8;
-  --color-brand-700: #255d99;
-  --color-brand-800: #1f4c7d;
-  --color-brand-900: #1b3f66;
+  /* Surfaces */
+  --color-abyss: #0b132b;
+  --color-deep: #0f172a;
 
-  /* Occasional subtle lavender — used only for gradients and hairline accents */
-  --color-lilac-50: #f8f7fd;
-  --color-lilac-100: #f0eefb;
-  --color-lilac-200: #e2ddf8;
-  --color-lilac-300: #c9c3f1;
-  --color-lilac-400: #ab9fe6;
-  --color-lilac-600: #6d5fc4;
+  /* Accent — cyan / electric blue */
+  --color-accent: #00b4d8;
+  --color-accent-hi: #22d3ee;
 
-  /* Muted navy — primary typography */
-  --color-ink-950: #0a1424;
-  --color-ink-900: #152539;
-  --color-ink-800: #25374d;
-  --color-ink-700: #3a4d64;
-  --color-ink-600: #556a82;
-
-  /* Quiet neutrals */
-  --color-mist-50: #fbfcfe;
-  --color-mist-100: #f5f7fa;
-  --color-mist-200: #e9edf3;
-  --color-mist-300: #d5dce5;
-  --color-mist-400: #a1b0c1;
-  --color-mist-500: #607286;
-  --color-mist-600: #4f6076;
-  --color-mist-700: #3b4a5d;
+  /* Type */
+  --color-heading: #ffffff;
+  --color-body: #e2e8f0;
+  --color-muted: #94a3b8;
 
   /* Consistent, restrained motion across every interactive element. */
   --default-transition-duration: 200ms;
   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* --------------------------------------------------------------------------
- * Motion used by the dialog components.
- * ----------------------------------------------------------------------- */
-@theme {
-  --animate-fade-in: fade-in 200ms ease-out both;
-  --animate-modal-in: modal-in 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes modal-in {
-    from {
-      opacity: 0;
-      transform: translateY(14px) scale(0.985);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
 }
 
 @layer base {
@@ -98,18 +48,18 @@
   }
 
   body {
-    background-color: #ffffff;
-    color: var(--color-ink-900);
+    background-color: var(--color-abyss);
+    color: var(--color-body);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Visible, consistent focus ring for keyboard users. */
+  /* Visible, consistent focus ring for keyboard users. It follows each
+     element's own border radius, so pills stay pills. */
   :focus-visible {
-    outline: 2px solid var(--color-brand-600);
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
-    border-radius: 2px;
   }
 
   /* Keeps anchored sections clear of the sticky header. */
@@ -118,8 +68,8 @@
   }
 
   ::selection {
-    background-color: var(--color-brand-200);
-    color: var(--color-ink-900);
+    background-color: var(--color-accent);
+    color: var(--color-abyss);
   }
 
   /* Next/Image renders plain <img> elements; keep them from ever overflowing. */
@@ -130,38 +80,41 @@
 }
 
 @layer components {
-  /* A single, restrained gradient accent — pale blue drifting into lavender.
-     Used sparingly for hero and section backdrops, never behind body text. */
-  .accent-gradient {
-    background-image: linear-gradient(
-      135deg,
-      var(--color-brand-100) 0%,
-      var(--color-lilac-100) 100%
-    );
-  }
-
-  /* Hairline version of the same pairing, for rules and borders. */
-  .accent-rule {
-    background-image: linear-gradient(
-      90deg,
-      var(--color-brand-400) 0%,
-      var(--color-lilac-300) 100%
-    );
-  }
-
-  /* Thin-bordered surface used for cards. Restrained shadow only. */
+  /* The one card style used across the page: a clean dark container with a
+     subtle 1px border (equivalent to Tailwind's `border-white/10`). */
   .surface-card {
-    background-color: #ffffff;
-    border: 1px solid var(--color-mist-200);
+    background-color: var(--color-deep);
+    border: 1px solid rgb(255 255 255 / 0.1);
     border-radius: 1rem;
-    box-shadow: 0 1px 2px rgb(21 37 57 / 0.04);
     transition:
       border-color var(--default-transition-duration)
         var(--default-transition-timing-function),
-      box-shadow var(--default-transition-duration)
-        var(--default-transition-timing-function),
-      transform var(--default-transition-duration)
+      background-color var(--default-transition-duration)
         var(--default-transition-timing-function);
+  }
+
+  /* Hairline accent used above titles and for the left rule on key items. */
+  .accent-rule {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-accent) 0%,
+      rgb(0 180 216 / 0) 100%
+    );
+  }
+
+  /* Restrained cyan bloom behind the hero. Decorative only — no content. */
+  .hero-glow {
+    background-image:
+      radial-gradient(
+        58rem 30rem at 50% -12rem,
+        rgb(0 180 216 / 0.18) 0%,
+        rgb(0 180 216 / 0) 68%
+      ),
+      radial-gradient(
+        38rem 24rem at 88% 12%,
+        rgb(34 211 238 / 0.1) 0%,
+        rgb(34 211 238 / 0) 62%
+      );
   }
 }
 
@@ -217,27 +170,15 @@
   left: 0.75rem;
   z-index: 100;
   transform: translateY(-200%);
-  background-color: var(--color-ink-900);
-  color: #fff;
+  background-color: var(--color-accent);
+  color: var(--color-abyss);
   padding: 0.7rem 1.1rem;
   border-radius: 0.5rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: transform 160ms ease-out;
 }
 
 .skip-link:focus-visible {
   transform: translateY(0);
-}
-
-/* --------------------------------------------------------------------------
- * Hide the horizontal scrollbar on the filter rail while keeping it scrollable.
- * ----------------------------------------------------------------------- */
-.no-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
 }

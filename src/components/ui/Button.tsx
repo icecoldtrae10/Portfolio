@@ -6,7 +6,10 @@ interface ButtonProps {
   /** Destination. Internal hashes (#contact) and full URLs both work. */
   href: string;
   children: ReactNode;
-  /** Primary = filled blue, Secondary = outlined. Visually distinct by design. */
+  /**
+   * Primary = filled cyan with dark text (6.9:1 contrast), Secondary =
+   * outlined on the dark background. Visually distinct by design.
+   */
   variant?: Variant;
   /** Adds target="_blank" + rel for external links. */
   external?: boolean;
@@ -16,13 +19,13 @@ interface ButtonProps {
 }
 
 const BASE =
-  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium focus-visible:outline-2";
+  "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm";
 
 const VARIANTS: Record<Variant, string> = {
   primary:
-    "bg-brand-600 text-white shadow-[0_1px_2px_rgba(21,37,57,0.16)] hover:bg-brand-700",
+    "bg-accent font-semibold text-abyss shadow-[0_1px_2px_rgba(0,0,0,0.35)] transition-colors hover:bg-accent-hi",
   secondary:
-    "border border-mist-300 bg-white text-ink-900 hover:border-ink-900 hover:bg-white",
+    "border border-white/20 font-medium text-heading transition-colors hover:border-accent hover:text-accent",
 };
 
 /**

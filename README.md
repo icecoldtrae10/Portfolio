@@ -1,7 +1,7 @@
-# Adrian Cadiao — Virtual Assistant Portfolio
+# Manuel Adrian Cadiao — Virtual Assistant Portfolio
 
-A single-page portfolio site covering social media management, online research,
-cold email outreach and administrative support.
+A single-page dark-themed portfolio covering social media growth, B2B lead
+generation, recruitment support and technical/web support.
 
 Built with **Next.js (App Router)**, **TypeScript** and **Tailwind CSS v4**.
 No database, no API, no paid services — it deploys as a static site.
@@ -26,6 +26,26 @@ npm run typecheck  # tsc --noEmit
 
 ---
 
+## Design system
+
+Everything visible is driven by the rules below, which live in
+`src/app/globals.css`.
+
+| Rule | Implementation |
+| --- | --- |
+| One sharp sans-serif, no serif/script/cursive | Geist Sans only, registered in `src/app/layout.tsx`. There is no `font-display` family in the project. |
+| Emphasis = weight or accent colour, never italics | `font-semibold` / `text-accent`. No `<em>` and no `italic` class appears anywhere. |
+| Dark slate / deep navy background | `--color-abyss: #0b132b` (page) and `--color-deep: #0f172a` (the About band). |
+| Cards = clean dark containers with a subtle 1px border | `.surface-card` → `#0f172a` background + `1px solid rgba(255,255,255,.1)` (equivalent to `border-white/10`). |
+| Cyan accent for highlights, tags and buttons | `--color-accent: #00b4d8` (hover `#22d3ee`). |
+| White headings, light-grey body | `--color-heading: #ffffff`, `--color-body: #e2e8f0`, secondary `--color-muted: #94a3b8`. |
+
+Contrast against `#0b132b`: white ≈ 18.9:1, `#e2e8f0` ≈ 13.6:1, `#94a3b8` ≈
+6.7:1, `#00b4d8` ≈ 6.9:1. The primary button is cyan with `#0b132b` text
+(≈ 6.9:1) rather than white on cyan, which would fail AA.
+
+---
+
 ## Where to edit things
 
 You should never need to touch a component to add content. Everything lives in
@@ -33,14 +53,13 @@ You should never need to touch a component to add content. Everything lives in
 
 | File | What it controls |
 | --- | --- |
-| `src/data/site.ts` | **Start here.** Name, wordmark, role line, live URL, email, LinkedIn |
+| `src/data/site.ts` | **Start here.** Name, wordmark, live URL, email, LinkedIn |
 | `src/data/navigation.ts` | Menu labels, links and the "Contact Me" button |
-| `src/data/services.ts` | The four services, their subtitles and their bullet lists |
-| `src/data/work-samples.ts` | The three "Work samples" and any visuals |
-| `src/data/experience.ts` | The two employers |
-| `src/data/approach.ts` | The four "How I work" steps |
-| `src/data/about.ts` | The four About paragraphs |
-| `src/data/tools.ts` | The two tool groups and their logo files |
+| `src/data/services.ts` | The four services — title, summary and bullet list |
+| `src/data/work-highlights.ts` | The three "Work Highlights & Stats" cards and their metric tags |
+| `src/data/experience.ts` | The four employers, locations, roles, dates and points |
+| `src/data/tools.ts` | The four tool groups and their logo files |
+| `src/data/about.ts` | The two About Me paragraphs |
 | `src/app/layout.tsx` | Page title, meta description, Open Graph / Twitter tags |
 
 Types for all of the above are in `src/data/types.ts`.
@@ -48,30 +67,39 @@ Types for all of the above are in `src/data/types.ts`.
 Section order is set in `src/app/page.tsx`:
 
 ```
-Hero → Services → Selected Work → Experience → How I Work → Tools → About → Contact
+Hero → Services → Work Highlights & Stats → Work Experience →
+Tools & Software → About Me → Contact
 ```
 
 The navigation shows a subset of those ids (Home · Services · Work · Experience ·
-About · Contact); "How I Work" and "Tools" are on the page but not in the menu.
+About · Contact); "Tools & Software" is on the page but not in the menu — the
+scroll-spy simply holds the last link while passing through it.
 
 ---
 
-## Adding a visual to a work sample
+## Adding a visual to a work highlight
 
-1. Drop the picture in `public/images/projects/`.
-2. Open `src/data/work-samples.ts` and add an `images` array to that sample:
+Each of the three cards in "Work Highlights & Stats" renders an **empty media
+slot** above its text — a 16:9 container reserved for the image or video sample
+that has not been supplied yet. The slot is `aria-hidden` and carries no
+placeholder wording, because no placeholder wording has been approved.
+
+To fill one:
+
+1. Drop the picture or video poster in `public/images/projects/`.
+2. Add an `images` field to `WorkHighlight` in `src/data/types.ts`:
 
    ```ts
-   images: [
-     {
-       src: "/images/projects/recruitment-poster.webp",
-       alt: "A short, accurate description of the picture.",
-     },
-   ],
+   /**
+    * Optional approved visuals for this highlight.
+    */
+   images?: { src: string; alt: string }[];
    ```
 
-3. Save. The framed image grid appears under that sample — and until you do, the
-   sample simply renders as text with no empty frame and no broken picture.
+3. Render it inside the slot in `src/components/WorkHighlights.tsx` in place of
+   the empty `div`, passing a `src` and a short, accurate `alt`.
+
+Until then the slot renders empty — no broken picture, no invented caption.
 
 **Only add work you are allowed to publish**, and label recreated examples as
 demonstrations rather than completed client projects.
@@ -86,29 +114,32 @@ Leave `logo` out and a neutral icon is shown instead — never a broken image.
 Logos are referenced by filename and served as static files, so there is no
 runtime third-party request.
 
-`public/images/logos/` also still holds the older technical marks (python,
-matlab, simulink, autocad, multisim, ltspice, arduino, tinkercad, java, c,
-cplusplus, labview, github, vercel). They are **unused on purpose** — the
-approved Tools section lists two groups only — so no downloading is needed if a
-"Technical and Engineering" group is ever added back.
+`public/images/logos/` also holds nine marks that no group currently
+references (gmail, microsoft-office, facebook, arduino, tinkercad, java, c,
+cplusplus, labview). They are **unused on purpose** — see
+[logos/README.md](public/images/logos/README.md) — so no downloading is needed
+if a group is ever added.
 
 ---
 
 ## Content rules built into this project
 
-- **No fabricated numbers.** The site shows no metrics, percentages, client
-  counts, response rates or analytics of any kind.
-- **No client names, testimonials or project results** appear anywhere.
-- **No contact form.** "Email Me" opens the visitor's own mail application with
-  the address already filled in, so nothing is silently discarded and no
-  backend is required.
-- **No profile photo.** The About section is text only by design.
-- **No availability, working-hours or time-zone claims.**
-- **No résumé section.** The approved copy has none, so no PDF is expected and
-  no link can 404.
-- Section headings, service copy, work samples, experience entries and the
-  About paragraphs are all kept exactly as approved — edit them in `src/data/`
+- **Every word on the page comes from the approved copy set.** Section
+  headings, service summaries, metric tags, experience points, tool names and
+  the About paragraphs are stored verbatim in `src/data/` — edit them there
   rather than in the components.
+- **No eyebrow labels.** The brief has no approved eyebrow copy, so
+  `SectionHeading` renders only a rule and the `<h2>` rather than inventing
+  one.
+- **No contact form.** The email link opens the visitor's own mail application
+  with the address already filled in, so nothing is silently discarded and no
+  backend is required.
+- **No phone number, and no availability, working-hours, time-zone or
+  turnaround claims.**
+- **No profile photo.** The About section is text only by design.
+- **No résumé section and no PDF**, so no link can 404.
+- Owner instructions in the brief (visual suggestions, permission notes) are
+  kept as comments in `src/data/`, never rendered.
 
 ---
 
@@ -137,12 +168,9 @@ vercel --prod   # production
 Run these from the project root once Git is installed and authenticated:
 
 ```bash
-git init
 git add .
-git commit -m "Initial commit: virtual assistant portfolio"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/va-portfolio.git
-git push -u origin main
+git commit -m "Describe your change"
+git push
 ```
 
 `node_modules/`, `.next/` and `tsconfig.tsbuildinfo` are already in
@@ -156,7 +184,7 @@ git push -u origin main
 public/
   images/
     logos/          <- official tool logos (SVG/PNG)
-    projects/       <- work sample visuals
+    projects/       <- optional work-highlight visuals
 
 src/
   app/              <- page, layout, fonts, colours, SEO, sitemap, robots
@@ -171,11 +199,13 @@ src/
 
 ## Accessibility and performance notes
 
-- Semantic landmarks, one `h1`, ordered heading hierarchy.
-- Keyboard operable throughout: skip link and visible focus rings everywhere.
-- Text colours are checked against white to at least 4.5:1 (WCAG AA).
-- `prefers-reduced-motion` is honoured globally — reveals are disabled and
-  scrolling becomes instant.
+- Semantic landmarks, one `h1`, ordered heading hierarchy (6 `h2`, 15 `h3`).
+- Keyboard operable throughout: skip link, visible focus rings everywhere, and
+  the mobile menu closes on Escape with focus returned to its trigger.
+- Text colours are checked against `#0b132b` to at least 4.5:1 (WCAG AA).
+- `prefers-reduced-motion` is honoured globally — reveals are disabled, all
+  content is shown immediately, and scrolling becomes instant. A CSS rule
+  forces every reveal visible under reduced motion even before JavaScript runs.
 - Reveal animations only activate when JavaScript is available, so no content
   is ever hidden from a no-JS visitor.
 - No animation libraries. Icons come from `lucide-react` plus one small inline

@@ -1,8 +1,7 @@
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import SelectedWork from "@/components/SelectedWork";
+import WorkHighlights from "@/components/WorkHighlights";
 import Experience from "@/components/Experience";
-import Approach from "@/components/Approach";
 import Tools from "@/components/Tools";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
@@ -14,11 +13,11 @@ import Contact from "@/components/Contact";
  * is the single place to reorder, add or remove one. The navigation in
  * `src/data/navigation.ts` is a subset of these ids.
  *
- *   Hero → Services → Selected Work → Experience → How I Work → Tools →
- *   About → Contact
+ *   Hero → Services → Work Highlights & Stats → Work Experience →
+ *   Tools & Software → About Me → Contact
  *
- * (There is no results/analytics band and no résumé section: neither has
- * approved copy, so neither is rendered.)
+ * "Tools & Software" sits between two sections that are not in the menu, so
+ * the scroll-spy simply holds the last link it matched while passing through.
  *
  * The `<main>` wrapper and the skip link live in `layout.tsx` — do not add a
  * second one here.
@@ -28,9 +27,8 @@ export default function Home() {
     <>
       <Hero />
       <Services />
-      <SelectedWork />
+      <WorkHighlights />
       <Experience />
-      <Approach />
       <Tools />
       <About />
       <Contact />

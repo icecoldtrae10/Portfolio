@@ -1,21 +1,22 @@
 import type { ReactNode } from "react";
 
 interface SectionHeadingProps {
-  /** Small uppercase label above the title. */
-  eyebrow: string;
+  /** The section heading, rendered as the `<h2>`. */
   title: ReactNode;
+  /** Optional lede. Omit it entirely when no description has been approved. */
   description?: ReactNode;
   align?: "left" | "center";
-  /** Tightens the top margin when the heading follows a toolbar. */
   className?: string;
 }
 
 /**
- * Shared section header: a short rule, an uppercase eyebrow, a title that can
- * mix the sans face with a serif accent, and an optional lede.
+ * Shared section header: a short cyan rule above a white `<h2>`.
+ *
+ * There is deliberately no eyebrow label — this site has no approved eyebrow
+ * copy, and inventing one would put words on the page that were never signed
+ * off. Emphasis comes from weight and the accent colour only.
  */
 export default function SectionHeading({
-  eyebrow,
   title,
   description,
   align = "left",
@@ -24,22 +25,20 @@ export default function SectionHeading({
   const centered = align === "center";
 
   return (
-    <div className={`${centered ? "mx-auto max-w-2xl text-center" : "max-w-3xl"} ${className}`}>
-      <div
-        className={`flex items-center gap-3 ${centered ? "justify-center" : ""}`}
-      >
-        <span aria-hidden="true" className="accent-rule h-px w-8" />
-        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">
-          {eyebrow}
-        </span>
-      </div>
+    <div
+      className={`${centered ? "mx-auto max-w-2xl text-center" : "max-w-3xl"} ${className}`}
+    >
+      <span
+        aria-hidden="true"
+        className={`accent-rule block h-px w-12 ${centered ? "mx-auto" : ""}`}
+      />
 
-      <h2 className="mt-4 text-3xl font-semibold leading-[1.12] tracking-[-0.022em] text-ink-900 sm:text-4xl lg:text-[2.75rem]">
+      <h2 className="mt-5 text-3xl font-semibold leading-[1.12] tracking-[-0.022em] text-heading sm:text-4xl lg:text-[2.75rem]">
         {title}
       </h2>
 
       {description ? (
-        <p className="mt-5 text-[1.0625rem] leading-relaxed text-mist-600">
+        <p className="mt-5 text-[1.0625rem] leading-relaxed text-body">
           {description}
         </p>
       ) : null}

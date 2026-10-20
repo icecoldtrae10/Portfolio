@@ -4,91 +4,61 @@ import LinkedInIcon from "@/components/icons/LinkedInIcon";
 import { site } from "@/data/site";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Button from "@/components/ui/Button";
 
 /**
- * Contact — two working links and nothing else.
+ * Contact — the two approved links and nothing else.
  *
- * There is no form on this site: "Email Me" opens the visitor's own mail
+ * There is no form on this site: the email link opens the visitor's own mail
  * application with the address already filled in, so nothing is faked and no
- * backend is needed. `site.email` and `site.linkedin` come from
- * `src/data/site.ts`.
+ * backend is needed. Both values come from `src/data/site.ts`.
+ *
+ * The field labels ("Primary Email", "LinkedIn") and both link values are
+ * reproduced exactly as supplied.
  */
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      aria-labelledby="contact-heading"
-      className="bg-brand-50/60 py-20 sm:py-28"
-    >
+    <section id="contact" aria-labelledby="contact-heading" className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] lg:gap-16">
-          <Reveal className="min-w-0">
-            <SectionHeading
-              eyebrow="Let's Connect"
-              title={
-                <span id="contact-heading">
-                  Need an{" "}
-                  <em className="font-display font-normal italic text-brand-700">
-                    extra pair of hands
-                  </em>{" "}
-                  for your projects?
-                </span>
-              }
-              description="If you need support with social media content, online research, manual outreach, or administrative work, I'd be happy to discuss your requirements."
-            />
+        <Reveal>
+          <SectionHeading title={<span id="contact-heading">Contact</span>} />
+        </Reveal>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-              <Button
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <Reveal delay={40} className="min-w-0 h-full">
+            <div className="surface-card h-full p-6 sm:p-7">
+              <p className="flex items-center gap-2.5 text-[0.8125rem] font-semibold tracking-[-0.01em] text-accent">
+                <Mail className="h-4 w-4" aria-hidden="true" />
+                Primary Email
+              </p>
+
+              <a
                 href={`mailto:${site.email}`}
-                icon={<Mail className="h-4 w-4" aria-hidden="true" />}
+                className="mt-4 block break-all text-[1.0625rem] font-medium text-heading underline-offset-4 transition-colors hover:text-accent hover:underline"
               >
-                Email Me
-              </Button>
-              <Button
-                href={site.linkedin}
-                variant="secondary"
-                external
-                icon={<LinkedInIcon className="h-4 w-4" />}
-              >
-                Connect on LinkedIn
-              </Button>
+                {site.email}
+              </a>
             </div>
           </Reveal>
 
-          {/* ------------------------------------------------- Direct details */}
-          <Reveal delay={80}>
+          <Reveal delay={100} className="min-w-0 h-full">
             <div className="surface-card h-full p-6 sm:p-7">
-              <ul className="space-y-5">
-                <li>
-                  <span className="flex items-center gap-2.5 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-brand-700">
-                    <Mail className="h-3.5 w-3.5" aria-hidden="true" />
-                    Email
-                  </span>
-                  <a
-                    href={`mailto:${site.email}`}
-                    className="mt-1.5 block break-all text-[0.9375rem] font-medium text-ink-900 underline-offset-4 transition-colors duration-200 hover:text-brand-700 hover:underline"
-                  >
-                    {site.email}
-                  </a>
-                </li>
+              <p className="flex items-center gap-2.5 text-[0.8125rem] font-semibold tracking-[-0.01em] text-accent">
+                <LinkedInIcon className="h-4 w-4" />
+                LinkedIn
+              </p>
 
-                <li className="border-t border-mist-200 pt-5">
-                  <span className="flex items-center gap-2.5 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-brand-700">
-                    <LinkedInIcon className="h-3.5 w-3.5" />
-                    LinkedIn
-                  </span>
-                  <a
-                    href={site.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1.5 inline-flex items-center gap-1.5 break-all text-[0.9375rem] font-medium text-ink-900 underline-offset-4 transition-colors duration-200 hover:text-brand-700 hover:underline"
-                  >
-                    {site.linkedinLabel}
-                    <ArrowUpRight className="h-4 w-4 shrink-0 text-mist-400" aria-hidden="true" />
-                  </a>
-                </li>
-              </ul>
+              <a
+                href={site.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-start gap-1.5 break-all text-[1.0625rem] font-medium text-heading underline-offset-4 transition-colors hover:text-accent hover:underline"
+              >
+                {site.linkedin}
+                <ArrowUpRight
+                  className="mt-1 h-4 w-4 shrink-0 text-accent"
+                  aria-hidden="true"
+                />
+              </a>
             </div>
           </Reveal>
         </div>

@@ -56,7 +56,7 @@ You should never need to touch a component to add content. Everything lives in
 | `src/data/site.ts` | **Start here.** Name, wordmark, live URL, email, LinkedIn |
 | `src/data/navigation.ts` | Menu labels, links and the "Contact Me" button |
 | `src/data/services.ts` | The four services — title, summary and bullet list |
-| `src/data/work-highlights.ts` | The three "Work Highlights & Stats" cards — screenshot, metric badge and verified highlights |
+| `src/data/work-highlights.ts` | The four "Work Highlights & Stats" cards — screenshot, metric badge and verified highlights |
 | `src/data/experience.ts` | The four employers, locations, roles, dates and points |
 | `src/data/tools.ts` | The four tool groups and their logo files |
 | `src/data/about.ts` | The two About Me paragraphs |
@@ -79,13 +79,13 @@ scroll-spy simply holds the last link while passing through it.
 
 ## The dashboard screenshots
 
-Each of the three cards in "Work Highlights & Stats" leads with its verified
+Each of the four cards in "Work Highlights & Stats" leads with its verified
 dashboard screenshot from `public/images/stats/`, stored as a fixed 16:9 plate
 (`rounded-xl`, `border-white/10`, `bg-slate-900/50`, dark backing so the white
 dashboards read cleanly). The dashboards are far too dense to read at card
 width, so clicking one — or pressing Enter on it — opens a full-screen
 preview: Escape, the backdrop or the close button dismisses it, and Left/Right
-arrows step between the three.
+arrows step between the four.
 
 Files, pixel sizes and `alt` text all live in
 `src/data/work-highlights.ts`; see `public/images/stats/README.md` for how to

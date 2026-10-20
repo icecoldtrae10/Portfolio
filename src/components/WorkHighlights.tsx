@@ -12,7 +12,7 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 /**
- * Work Highlights & Stats — three verified-metric cards in a grid.
+ * Work Highlights & Stats — four verified-metric cards in a 2x2 grid.
  *
  * Each card leads with its dashboard screenshot (`public/images/stats/`),
  * which can be opened full size because the dashboards are far too dense to
@@ -37,7 +37,7 @@ export default function WorkHighlights() {
           />
         </Reveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           {workHighlights.map((item, index) => (
             <Reveal key={item.id} delay={index * 60} className="h-full min-w-0">
               <article className="flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-slate-900/50 transition-colors hover:border-accent/40">
@@ -51,7 +51,7 @@ export default function WorkHighlights() {
                     src={item.image.src}
                     alt={item.image.alt}
                     fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    sizes="(min-width: 768px) 50vw, 100vw"
                     className="object-contain p-2 transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transform-none"
                   />
                 </button>

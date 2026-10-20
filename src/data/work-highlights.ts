@@ -12,13 +12,13 @@ export const workHighlightsHeader = {
 };
 
 /**
- * The label above every card's bullet list. It is identical on all three
+ * The label above every card's bullet list. It is identical on all four
  * cards, so it is declared once here rather than repeated below.
  */
 export const verifiedHighlightsLabel = "Verified Dashboard Highlights:";
 
 /**
- * The three verified-metric cards.
+ * The four verified-metric cards.
  *
  * Every string here is reproduced exactly as approved — titles, metric
  * badges, descriptions, bullet labels and bullet values. Splitting each

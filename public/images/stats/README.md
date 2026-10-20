@@ -1,6 +1,6 @@
 # Dashboard screenshots
 
-The three screenshots shown at the top of the "Work Highlights & Stats"
+The four screenshots shown at the top of the "Work Highlights & Stats"
 cards. Each one is referenced from `src/data/work-highlights.ts`, which also
 stores its intrinsic pixel size and the `alt` text describing what it shows.
 
@@ -8,7 +8,8 @@ stores its intrinsic pixel size and the `alt` text describing what it shows.
 | --- | --- | --- |
 | `Portfolio Stats 1.jpg` (1666×787) | Facebook Audience Growth & Engagement | Meta Business Suite Insights, 10 Dec 2025 – 19 Oct 2026: net follower growth 16,086, 16,335 lifetime followers, 4.1K messaging contacts |
 | `Portfolio Stats 2.jpg` (1669×787) | Multi-Campaign Audience & Lead Scaling | Meta Business Suite Insights, 14 Jul 2024 – 20 Oct 2026: net follower growth 34,960, 38,819 lifetime followers, 6.9K messaging contacts |
-| `Portfolio Stats 3.jpg` (844×757) | Viral Reach & Short-Form Content Performance | Reel analytics: 448.7K views, 3.1K interactions, 2.0K likes, 562 comments, 250 shares, 294 saves |
+| `Portfolio Stats 3.jpg` (844×757) | Viral Reach & Short-Form Content Performance | Facebook photo post analytics: 448.7K views, 3.1K interactions, 2.0K likes, 562 comments, 250 shares, 294 saves |
+| `Portfolio Stats 4.jpg` (582×576) | Viral Post Reach & High-Volume Engagement | Facebook post analytics: 866.7K views, 3.6K interactions, 2.1K likes, 651 comments, 412 shares, 457 saves |
 
 Card width is too small to read a dashboard, so every screenshot is also
 openable full size — click it (or press Enter on it) to open the preview, then

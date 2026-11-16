@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Security upgrades are applied through the agent upgrade flow.
+  experimental: {
+    agentUpgrade: "security",
+  },
   images: {
     // AVIF/WebP output for any real photographs or screenshots you add later.
     formats: ["image/avif", "image/webp"],

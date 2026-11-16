@@ -57,6 +57,27 @@ export interface WorkHighlight {
 }
 
 /* ------------------------------------------------------------------ *
+ * Design portfolio
+ * ------------------------------------------------------------------ */
+
+export interface DesignWorkItem {
+  /** Stable id — used for React keys. Use kebab-case. */
+  id: string;
+  /** The graphic, rendered at its natural aspect ratio (never cropped). */
+  image: {
+    /** Path under `public/`, e.g. "/images/design/quote-sunrise.jpg". */
+    src: string;
+    /** Intrinsic pixel size of the file — used to avoid layout shift. */
+    width: number;
+    height: number;
+    /** Short, accurate description of what the graphic shows. */
+    alt: string;
+  };
+  /** Short label shown in the full-screen preview's header. */
+  title: string;
+}
+
+/* ------------------------------------------------------------------ *
  * Professional experience
  * ------------------------------------------------------------------ */
 

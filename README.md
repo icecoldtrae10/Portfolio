@@ -57,6 +57,7 @@ You should never need to touch a component to add content. Everything lives in
 | `src/data/navigation.ts` | Menu labels, links and the "Contact Me" button |
 | `src/data/services.ts` | The four services — title, summary and bullet list |
 | `src/data/work-highlights.ts` | The four "Work Highlights & Stats" cards — screenshot, metric badge and verified highlights |
+| `src/data/design-work.ts` | The six "Design Portfolio" gallery graphics — file, size, alt text and preview label |
 | `src/data/experience.ts` | The four employers, locations, roles, dates and points |
 | `src/data/tools.ts` | The four tool groups and their logo files |
 | `src/data/about.ts` | The two About Me paragraphs |
@@ -67,13 +68,14 @@ Types for all of the above are in `src/data/types.ts`.
 Section order is set in `src/app/page.tsx`:
 
 ```
-Hero → Services → Work Highlights & Stats → Work Experience →
-Tools & Software → About Me → Contact
+Hero → Services → Work Highlights & Stats → Design Portfolio →
+Work Experience → Tools & Software → About Me → Contact
 ```
 
 The navigation shows a subset of those ids (Home · Services · Work · Experience ·
-About · Contact); "Tools & Software" is on the page but not in the menu — the
-scroll-spy simply holds the last link while passing through it.
+About · Contact); "Design Portfolio" and "Tools & Software" are on the page but
+not in the menu — the scroll-spy simply holds the last link while passing
+through them.
 
 ---
 
@@ -95,6 +97,21 @@ swap one.
 (candidate names, contacts, client identifiers) cropped out of every
 screenshot. Recreated examples must be labelled as demonstrations rather than
 completed client projects.
+
+## The design gallery
+
+The "Design Portfolio" section (`#design`, after Work Highlights) shows six
+social media graphics from `public/images/design/` in a light masonry built
+with CSS columns, so every piece keeps its **natural aspect ratio** — the set
+mixes 4:5, square and 3:2 artwork and cropping a design sample would hide the
+part being showcased. Tiles share the site's card chrome (`rounded-xl`,
+`border-white/10`, `bg-slate-900/50`), lift slightly on hover and open the
+same full-screen preview as the dashboard screenshots.
+
+Files, pixel sizes, `alt` text and preview labels all live in
+`src/data/design-work.ts`; see `public/images/design/README.md` for how to
+add or swap a graphic. The section is on the page but not in the menu, the
+same as Tools & Software.
 
 ## Adding a tool logo
 

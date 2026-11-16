@@ -136,7 +136,7 @@ export default function Lightbox({
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
-        aria-label={`${current.title} — screenshot preview`}
+        aria-label={`${current.title} — image preview`}
         className="flex max-h-full w-full max-w-4xl flex-col overflow-hidden rounded-xl border border-white/10 bg-slate-900/95 shadow-2xl"
         onClick={(event) => event.stopPropagation()}
       >
@@ -148,7 +148,7 @@ export default function Lightbox({
           <div className="flex shrink-0 items-center gap-1">
             <button
               type="button"
-              aria-label="Previous screenshot"
+              aria-label="Previous image"
               onClick={() => onIndexChange((index - 1 + count) % count)}
               className={BUTTON_CLASS}
             >
@@ -156,7 +156,7 @@ export default function Lightbox({
             </button>
             <button
               type="button"
-              aria-label="Next screenshot"
+              aria-label="Next image"
               onClick={() => onIndexChange((index + 1) % count)}
               className={BUTTON_CLASS}
             >
@@ -182,7 +182,7 @@ export default function Lightbox({
           data-lightbox-scroller=""
           tabIndex={0}
           role="group"
-          aria-label={`${current.title} screenshot`}
+          aria-label={`${current.title} — image`}
           className="max-h-[72vh] overflow-auto p-3 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent sm:p-4"
         >
           <Image

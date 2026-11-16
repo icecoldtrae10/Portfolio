@@ -7,8 +7,8 @@
  * `src/app/page.tsx`.
  *
  * The link set is Home · Services · Work · Experience · About · Contact.
- * "Tools & Software" is on the page but not in the menu — the scroll-spy
- * simply skips it.
+ * "Design Portfolio" and "Tools & Software" are on the page but not in the
+ * menu — the scroll-spy simply skips them.
  */
 
 export interface NavItem {

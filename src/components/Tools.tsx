@@ -1,39 +1,18 @@
-import Image from "next/image";
-import { Boxes } from "lucide-react";
-
 import { toolGroups } from "@/data/tools";
-import type { Tool } from "@/data/types";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
+import ToolLogo from "@/components/ui/ToolLogo";
 
 /**
  * Tools & software — four groups of labelled chips.
  *
  * Every logo lives in `public/images/logos/` and is referenced by filename in
- * `src/data/tools.ts`. A tool with no `logo` entry falls back to a neutral
- * glyph, never a broken image.
+ * `src/data/tools.ts`, rendered by `ToolLogo` as a direct static `<img>`.
+ * A tool with no `logo` entry — or one whose file fails to load — falls back
+ * to a neutral glyph, never an empty box.
  *
  * No proficiency levels or badges are shown — only names and official marks.
  */
-function Logo({ tool, className }: { tool: Tool; className: string }) {
-  if (!tool.logo) {
-    return (
-      <span className={`${className} flex items-center justify-center text-muted`}>
-        <Boxes className="h-full w-full" aria-hidden="true" />
-      </span>
-    );
-  }
-
-  return (
-    <Image
-      src={`/images/logos/${tool.logo}`}
-      alt={`${tool.name} logo`}
-      width={44}
-      height={44}
-      className={`${className} object-contain`}
-    />
-  );
-}
 
 export default function Tools() {
   return (
@@ -63,7 +42,11 @@ export default function Tools() {
                     className="surface-card flex items-center gap-3 px-4 py-3"
                   >
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04]">
-                      <Logo tool={tool} className="h-5 w-5" />
+                      <ToolLogo
+                      name={tool.name}
+                      file={tool.logo}
+                      className="h-5 w-5"
+                    />
                     </span>
                     <span className="text-[0.875rem] font-medium leading-snug text-heading">
                       {tool.name}

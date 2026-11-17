@@ -59,7 +59,7 @@ You should never need to touch a component to add content. Everything lives in
 | `src/data/work-highlights.ts` | The four "Work Highlights & Stats" cards — screenshot, metric badge and verified highlights |
 | `src/data/design-work.ts` | The six "Design Portfolio" gallery graphics — file, size, alt text and preview label |
 | `src/data/experience.ts` | The four employers, locations, roles, dates and points |
-| `src/data/tools.ts` | The four tool groups and their logo files |
+| `src/data/tools.ts` | The four tool groups — tool names and logo files |
 | `src/data/about.ts` | The two About Me paragraphs |
 | `src/app/layout.tsx` | Page title, meta description, Open Graph / Twitter tags |
 
@@ -123,11 +123,12 @@ Leave `logo` out and a neutral icon is shown instead — never a broken image.
 Logos are referenced by filename and served as static files, so there is no
 runtime third-party request.
 
-`public/images/logos/` also holds nine marks that no group currently
-references (gmail, microsoft-office, facebook, arduino, tinkercad, java, c,
-cplusplus, labview). They are **unused on purpose** — see
+`public/images/logos/` also holds ten files that no group currently
+references (gmail, microsoft-excel, google-sheets, facebook, instagram,
+tinkercad, c, cplusplus, plus the full `Hootsuite_logo.png` and the
+`LTspice.png` app icon). They are **unused on purpose** — see
 [logos/README.md](public/images/logos/README.md) — so no downloading is needed
-if a group is ever added.
+if a group is ever added. All 29 tools in the section have a logo today.
 
 ---
 

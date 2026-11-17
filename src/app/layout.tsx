@@ -23,14 +23,14 @@ const pageTitle = `${site.name} | Virtual Assistant Portfolio`;
 
 /** Approved meta description (search result snippet). */
 const pageDescription =
-  "Explore Adrian Cadiao's portfolio featuring social media management, Canva design, online research, manual cold email outreach, and administrative support.";
+  "Adrian Cadiao's Virtual Assistant portfolio: social media management, Canva design, online research, cold email outreach, admin support, and web development.";
 
 /** Approved social sharing title — deliberately shorter than `pageTitle`. */
 const socialTitle = `${site.name} | Virtual Assistant`;
 
 /** Approved social sharing description. */
 const socialDescription =
-  "Social media, research, outreach, and administrative support from a Virtual Assistant with hands-on recruitment industry experience.";
+  "Social media, design, research, outreach, admin support, and web development from a Virtual Assistant with hands-on recruitment industry experience.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -50,6 +50,11 @@ export const metadata: Metadata = {
     "spreadsheet organization",
     "remote assistant",
     "virtual assistant portfolio",
+    "web development",
+    "design portfolio",
+    "short-form video",
+    "Meta Business Suite",
+    "engineering software",
   ],
   authors: [{ name: site.name }],
   creator: site.name,
